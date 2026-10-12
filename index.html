@@ -1,0 +1,2561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Muse Studios</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Muse Studios — stories no one wants to tell. A production house for Global South stories, London · Islamabad.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+/* ============================================================
+   MUSE STUDIOS — DESIGN TOKENS
+   colors_and_type.css
+   ============================================================ */
+
+/* ---------- WEBFONTS (Google Fonts substitution) ---------- */
+:root {
+  /* ============================================================
+     COLOR TOKENS — base scale
+     ============================================================ */
+
+  /* Ink — deep warm black, the primary text/UI color */
+  --ink:           #0E0D0B;
+  --ink-90:        #1A1815;
+  --ink-80:        #2A2722;
+  --ink-60:        #4D4842;
+  --ink-40:        #807A72;
+  --ink-20:        #B8B2A8;
+  --ink-10:        #D9D3C8;
+  --ink-05:        #ECE6DB;
+
+  /* Cream — paper, primary background. Kept LIGHT — paper is the default base. */
+  --cream:         #FAF5EA;
+  --cream-soft:    #F7F1E5;
+  --cream-deep:    #EFE7D6;
+  --paper:         #FCF8EF;
+
+  /* Retro light bases — faded, low-chroma tints that broaden the light register.
+     Used as alternate large surfaces for a warmer, mid-century print feel. */
+  --oat:           #ECDCBE;   /* warm butter sand */
+  --mist:          #CFD9CF;   /* faded sage mist */
+  --blush:         #ECD2C6;   /* dusty peach */
+  --powder:        #CBD4DD;   /* faded powder blue */
+
+  /* Ox-blood — cinematic red, used in large blocks */
+  --oxblood:       #7A1E1E;
+  --oxblood-deep:  #5A1313;
+  --oxblood-soft:  #9A2828;
+
+  /* Ochre — warm gold, secondary cinematic accent */
+  --ochre:         #D9A441;
+  --ochre-deep:    #A8761E;
+  --ochre-soft:    #E8BE6B;
+
+  /* Twilight — deep blue, night scenes / contrast */
+  --twilight:      #1B2A4E;
+  --twilight-deep: #0F1A33;
+  --twilight-soft: #2D406B;
+
+  /* Signal — record-light red. RESERVED for live / primary CTA */
+  --signal:        #FF3B1F;
+  --signal-deep:   #D72A0F;
+
+  /* Sage — rare cool accent, used only on tool surfaces */
+  --sage:          #6E8B6A;
+
+  /* Jade + Iris — whimsical pops (blues & greens) */
+  --jade:          #3FA37A;
+  --jade-deep:     #2C7355;
+  --jade-soft:     #6FC09B;
+  --iris:          #5B6FE0;
+  --iris-deep:     #3D4FB0;
+  --iris-soft:     #8B99EC;
+
+  /* ============================================================
+     SEMANTIC COLOR TOKENS
+     ============================================================ */
+
+  /* Foregrounds (text) */
+  --fg-1:          var(--ink);            /* primary text */
+  --fg-2:          var(--ink-80);         /* secondary text */
+  --fg-3:          var(--ink-60);         /* tertiary / metadata */
+  --fg-4:          var(--ink-40);         /* disabled / very low */
+  --fg-on-ink:     var(--cream);          /* text on dark surfaces */
+  --fg-on-image:   var(--cream);          /* text on imagery */
+  --fg-accent:     var(--oxblood);        /* emphasis links / accent text */
+  --fg-signal:     var(--signal);         /* live / urgent */
+
+  /* Backgrounds */
+  --bg-1:          var(--cream);          /* primary surface */
+  --bg-2:          var(--paper);          /* raised paper surface */
+  --bg-3:          var(--cream-deep);     /* sunken / pressed */
+  --bg-ink:        var(--ink);            /* dark / tool surface */
+  --bg-ink-2:      var(--ink-90);         /* dark raised */
+  --bg-ink-3:      var(--ink-80);         /* dark sunken */
+  --bg-oxblood:    var(--oxblood);        /* large block — service intro */
+  --bg-twilight:   var(--twilight);       /* large block — night / dramatic */
+  --bg-ochre:      var(--ochre);          /* large block — warm accent */
+
+  /* Borders */
+  --border:        var(--ink);            /* default 1px ink */
+  --border-soft:   var(--ink-20);         /* subdued */
+  --border-on-ink: var(--cream);          /* on dark surfaces */
+
+  /* States */
+  --hover-shade:   rgba(14, 13, 11, 0.08);
+  --press-shade:   rgba(14, 13, 11, 0.16);
+  --focus-ring:    var(--ink);
+
+  /* ============================================================
+     TYPOGRAPHY TOKENS
+     ============================================================ */
+
+  /* Families */
+  --font-display:  'Instrument Serif', 'Times New Roman', serif;
+  --font-sans:     'Space Grotesk', 'Helvetica Neue', sans-serif;
+  --font-mono:     'JetBrains Mono', 'Menlo', monospace;
+
+  /* Type scale — 1.333 (perfect fourth) */
+  --text-xs:       11px;
+  --text-sm:       13px;
+  --text-base:     16px;
+  --text-md:       18px;
+  --text-lg:       22px;
+  --text-xl:       28px;
+  --text-2xl:      40px;
+  --text-3xl:      56px;
+  --text-4xl:      80px;
+  --text-5xl:      112px;
+  --text-6xl:      160px;
+
+  /* Line heights */
+  --lh-tight:      0.92;  /* @kind other */
+  --lh-snug:       1.05;  /* @kind other */
+  --lh-normal:     1.4;   /* @kind other */
+  --lh-loose:      1.6;   /* @kind other */
+
+  /* Letter-spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide:  0.04em;
+  --tracking-mega:  0.16em;  /* for ALLCAPS labels */
+
+  /* Weights */
+  --weight-light:    300;
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ============================================================
+     SPACING / RHYTHM
+     ============================================================ */
+  --space-0:   0px;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   24px;
+  --space-6:   32px;
+  --space-7:   48px;
+  --space-8:   64px;
+  --space-9:   96px;
+  --space-10:  128px;
+  --space-11:  192px;
+  --space-12:  256px;
+
+  /* ============================================================
+     RADII / BORDERS / SHADOWS
+     ============================================================ */
+  --radius-0:    0px;       /* default — square */
+  --radius-1:    2px;       /* chips/tags only */
+  --radius-pill: 999px;     /* avatars, dot indicators only */
+
+  --border-1:    1px solid var(--ink);
+  --border-2:    2px solid var(--ink);
+  --border-soft-1: 1px solid var(--ink-20);
+  --border-on-ink-1: 1px solid var(--cream);
+
+  /* The ONE shadow allowed (input insets) */
+  --shadow-inset: inset 0 0 0 1px rgba(14, 13, 11, 0.08);
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-mech:    cubic-bezier(0.2, 0.7, 0.1, 1);  /* @kind other */
+  --ease-quick:   cubic-bezier(0.4, 0, 0.2, 1);    /* @kind other */
+  --dur-micro:    180ms;  /* @kind other */
+  --dur-base:     320ms;  /* @kind other */
+  --dur-slow:     600ms;  /* @kind other */
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  --content-max:    1280px;
+  --gutter:         24px;
+  --letterbox:      56px;     /* hero top/bottom black bars */
+  --topbar:         64px;
+  --timestrip:      32px;
+}
+
+/* ============================================================
+   BASE TYPE — semantic element styles
+   ============================================================ */
+
+html {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  line-height: var(--lh-normal);
+}
+
+/* ----- Display headings — Instrument Serif ----- */
+.h-display, h1.display, .hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-normal);
+}
+
+.h-display-italic, .hero-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-4xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-normal);
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-normal);
+  margin: 0 0 var(--space-5) 0;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-normal);
+  margin: 0 0 var(--space-4) 0;
+}
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  line-height: var(--lh-snug);
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--space-3) 0;
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  margin: 0 0 var(--space-2) 0;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--lh-loose);
+  color: var(--fg-1);
+  margin: 0 0 var(--space-4) 0;
+  text-wrap: pretty;
+}
+
+.lead {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+
+.small, small {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+}
+
+/* ----- Mono / metadata register ----- */
+.meta, .timecode, code, kbd, .label-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-normal);
+  color: var(--fg-3);
+}
+
+.timecode {
+  color: var(--fg-1);
+  font-feature-settings: "tnum" 1;
+}
+
+/* ----- Eyebrow / overline ----- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-mega);
+  text-transform: uppercase;
+  color: var(--fg-3);
+  font-weight: var(--weight-medium);
+}
+
+/* ----- Links ----- */
+a {
+  color: var(--fg-1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-micro) var(--ease-mech);
+}
+a:hover {
+  border-bottom-color: var(--ink);
+}
+a.signal {
+  color: var(--fg-signal);
+}
+
+/* ----- Selection ----- */
+::selection {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.surface-ink   { background: var(--bg-ink);     color: var(--fg-on-ink); }
+.surface-cream { background: var(--bg-1);        color: var(--fg-1); }
+.surface-oxblood { background: var(--bg-oxblood); color: var(--cream); }
+.surface-ochre  { background: var(--bg-ochre);   color: var(--ink); }
+.surface-twilight { background: var(--bg-twilight); color: var(--cream); }
+
+.frame-corners {
+  position: relative;
+}
+.frame-corners::before,
+.frame-corners::after {
+  content: "";
+  position: absolute;
+  width: 12px; height: 12px;
+  border: 1px solid currentColor;
+  pointer-events: none;
+  transition: all var(--dur-micro) var(--ease-mech);
+}
+.frame-corners::before {
+  top: 6px; left: 6px;
+  border-right: none; border-bottom: none;
+}
+.frame-corners::after {
+  bottom: 6px; right: 6px;
+  border-left: none; border-top: none;
+}
+.frame-corners:hover::before,
+.frame-corners:hover::after {
+  width: 16px; height: 16px;
+  border-width: 2px;
+}
+
+/* Recording pulse */
+@keyframes recpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.rec-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--signal);
+  animation: recpulse 1.2s var(--ease-mech) infinite;
+}
+
+/* Frame-advance reveal */
+@keyframes frame-advance {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.advance-in {
+  animation: frame-advance var(--dur-base) var(--ease-mech) both;
+}
+
+/* Marketing site shared styles */
+
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
+body { font-family: var(--font-sans); }
+button { font-family: inherit; cursor: pointer; }
+a { cursor: pointer; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+/* Top bar */
+.topbar {
+  background: var(--ink); color: var(--cream);
+  padding: 18px 32px; display:flex; align-items:center; gap:32px;
+  position: sticky; top: 0; z-index: 50;
+  border-bottom: 1px solid var(--ink);
+}
+.brand-lockup { display:flex; align-items:center; gap:12px; border-bottom:none !important; }
+.topbar .brand { font-family: var(--font-display); font-style:italic; font-size:38px; line-height:0.9; letter-spacing:-0.02em; color: var(--cream); }
+.topbar .brand-dot { width:7px; height:7px; border-radius:999px; background: var(--signal); align-self:flex-start; margin-top:8px; }
+.brand-stack { display:flex; flex-direction:column; gap:2px; }
+.topbar .brand-tag { font-family: var(--font-mono); font-size:11px; letter-spacing:0.28em; color: var(--cream); font-weight:500; }
+.topbar .brand-sub { font-family: var(--font-mono); font-size:8px; letter-spacing:0.2em; color: var(--ink-40); }
+.topbar nav { display:flex; gap:28px; flex:1; justify-content:flex-end; align-items:center; }
+.topbar nav a { color: var(--cream); border-bottom: 1px solid transparent; padding:6px 0; font-size:14px; transition: border-color 180ms var(--ease-mech); }
+.topbar nav a:hover, .topbar nav a.active { border-bottom-color: var(--cream); }
+.topbar .live-pill { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border:1px solid var(--cream); border-radius:2px; white-space:nowrap; }
+.topbar .live-pill .meta { color: var(--cream); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; }
+
+/* Footer */
+.foot { background: var(--ink); color: var(--cream); padding: 64px 32px 32px; margin-top: 96px; }
+.foot .foot-grid { max-width: 1280px; margin: 0 auto; display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+.foot h4 { font-family: var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color: var(--ink-20); margin: 0 0 16px 0; font-weight: 500; }
+.foot a { color: var(--cream); display:block; padding: 4px 0; font-size: 14px; }
+.foot .endline { max-width: 1280px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid var(--ink-80); display:flex; justify-content:space-between; }
+.foot .endline span { font-family: var(--font-mono); font-size: 11px; color: var(--ink-40); letter-spacing:0.08em; }
+
+/* Buttons */
+.btn { font-family: var(--font-sans); font-size: 14px; font-weight: 500; padding: 12px 20px; border: 1px solid var(--ink); background: transparent; color: var(--ink); transition: all 180ms var(--ease-mech); display:inline-flex; align-items:center; gap:10px; }
+.btn:hover { background: var(--ink); color: var(--cream); }
+.btn:active { transform: scale(0.98); }
+.btn.primary { background: var(--ink); color: var(--cream); }
+.btn.primary:hover { background: var(--ink-90); }
+.btn.signal { background: var(--signal); color: var(--ink); border-color: var(--signal); font-weight: 600; }
+.btn.signal:hover { background: var(--signal-deep); border-color: var(--signal-deep); color: var(--cream); }
+.btn.cream { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.btn.cream:hover { background: transparent; color: var(--cream); border-color: var(--cream); }
+
+/* Eyebrow + meta */
+.eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing:0.16em; text-transform:uppercase; color: var(--fg-3); font-weight: 500; }
+.eyebrow.on-ink { color: var(--ink-20); }
+
+/* Frame card */
+.frame-card { position: relative; border: 1px solid var(--ink); padding: 18px; transition: all 180ms var(--ease-mech); }
+.frame-card::before, .frame-card::after { content:""; position:absolute; width:14px; height:14px; pointer-events:none; transition: all 180ms var(--ease-mech); }
+.frame-card::before { top:-1px; left:-1px; border-left:2px solid var(--ink); border-top:2px solid var(--ink); }
+.frame-card::after { bottom:-1px; right:-1px; border-right:2px solid var(--ink); border-bottom:2px solid var(--ink); }
+.frame-card:hover::before, .frame-card:hover::after { width:20px; height:20px; }
+
+/* Letterbox hero */
+.letterbox {
+  position: relative; background: var(--ink); color: var(--cream);
+  padding: 56px 0;
+  overflow: hidden;
+}
+.letterbox-bar {
+  position: absolute; left:0; right:0; height: 32px; background: #000;
+  display:flex; align-items:center; padding: 0 32px; gap:16px; z-index:5;
+}
+.letterbox-bar.top { top: 0; }
+.letterbox-bar.bottom { bottom: 0; }
+.letterbox-bar .meta { font-family: var(--font-mono); font-size: 11px; color: var(--cream); letter-spacing: 0.12em; }
+
+/* Frame brackets at section corners */
+.section-frame { position: relative; }
+.section-frame::before, .section-frame::after,
+.section-frame > .br-tl, .section-frame > .br-tr,
+.section-frame > .br-bl, .section-frame > .br-br { display: none; }
+
+.corner-marks { position: absolute; pointer-events: none; }
+.corner-marks span { position: absolute; width: 18px; height: 18px; }
+.corner-marks .tl { top: 0; left: 0; border-top: 1px solid currentColor; border-left: 1px solid currentColor; }
+.corner-marks .tr { top: 0; right: 0; border-top: 1px solid currentColor; border-right: 1px solid currentColor; }
+.corner-marks .bl { bottom: 0; left: 0; border-bottom: 1px solid currentColor; border-left: 1px solid currentColor; }
+.corner-marks .br { bottom: 0; right: 0; border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; }
+
+/* Sprocket strip */
+.sprockets { display:flex; gap: 14px; }
+.sprockets > span { width: 8px; height: 8px; background: currentColor; opacity: 0.4; }
+
+/* Image slot fallback styles */
+image-slot { background: var(--ink-10); }
+
+/* ============================================================
+   EDIT-SUITE HOME — production-tool chrome for the landing page
+   ============================================================ */
+.es-home { background: var(--ink); color: var(--cream); }
+
+/* control / crumb strip (mirrors the studio topstrip) */
+.es-strip {
+  background: var(--ink-90); border-bottom: 1px solid var(--ink-80);
+  display: flex; align-items: center; gap: 16px; padding: 0 24px; height: 40px;
+}
+.es-crumb { font-family: var(--font-mono); font-size: 11px; color: var(--ink-20); letter-spacing: 0.08em; }
+.es-crumb b { color: var(--cream); font-weight: 500; }
+.es-crumb .sep { color: var(--ink-60); margin: 0 8px; }
+.es-tc { font-family: var(--font-mono); font-size: 12px; color: var(--cream); font-feature-settings:'tnum' 1; }
+.es-recpill { display:inline-flex; align-items:center; gap:8px; padding:4px 10px; border:1px solid var(--signal); background: rgba(255,59,31,0.12); border-radius:2px; white-space:nowrap; }
+.es-recpill .meta { font-family: var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color: var(--cream); }
+
+/* mono eyebrow on dark */
+.es-eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-40); white-space: nowrap; }
+
+/* program monitor */
+.es-monitor { position: relative; border: 1px solid var(--ink-60); overflow: hidden; }
+.es-monitor .grad { position: absolute; inset: 0; }
+.es-monitor .scan { position:absolute; inset:0; background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0 1px, transparent 1px 3px); pointer-events:none; opacity:0.5; }
+.es-bracket { position: absolute; width: 22px; height: 22px; z-index: 4; }
+.es-bracket.tl { top:14px; left:14px; border-top:2px solid var(--cream); border-left:2px solid var(--cream); }
+.es-bracket.tr { top:14px; right:14px; border-top:2px solid var(--cream); border-right:2px solid var(--cream); }
+.es-bracket.bl { bottom:14px; left:14px; border-bottom:2px solid var(--cream); border-left:2px solid var(--cream); }
+.es-bracket.br { bottom:14px; right:14px; border-bottom:2px solid var(--cream); border-right:2px solid var(--cream); }
+
+/* dark buttons (mirror studio dbtn) */
+.es-btn { font-family: var(--font-sans); font-size: 13px; padding: 10px 16px; border: 1px solid var(--ink-60); background: transparent; color: var(--cream); cursor: pointer; transition: all 180ms var(--ease-mech); display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
+.es-btn:hover { border-color: var(--cream); background: var(--ink-80); }
+.es-btn.signal { background: var(--signal); color: var(--ink); border-color: var(--signal); font-weight:600; }
+.es-btn.signal:hover { background: var(--signal-deep); color: var(--cream); border-color: var(--signal-deep); }
+.es-btn.cream { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.es-btn.cream:hover { background: var(--ink-20); }
+.es-btn:active { transform: scale(0.98); }
+
+/* reel card (mirror studio reel-card) */
+.es-reel { background: var(--ink-90); border: 1px solid var(--ink-80); transition: border-color 180ms var(--ease-mech); cursor: pointer; }
+.es-reel:hover { border-color: var(--cream); }
+.es-reel .thumb { position: relative; height: 220px; border-bottom: 1px solid var(--ink-80); overflow: hidden; }
+.es-reel .thumb .grad { position:absolute; inset:0; }
+.es-reel .thumb .scan { position:absolute; inset:0; background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0 1px, transparent 1px 3px); opacity:0.5; }
+
+/* status chips */
+.es-status { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 8px; border: 1px solid; border-radius: 2px; display: inline-flex; align-items: center; gap: 6px; }
+.es-status.dev { color: var(--ink-20); border-color: var(--ink-60); }
+.es-status.shoot { color: var(--signal); border-color: var(--signal); background: rgba(255,59,31,0.08); }
+.es-status.post { color: var(--ochre); border-color: var(--ochre); background: rgba(217,164,65,0.08); }
+.es-status.delivered { color: var(--cream); border-color: var(--cream); }
+
+/* scrubber */
+.es-scrubber { position: relative; height: 72px; background: var(--ink-90); border: 1px solid var(--ink-80); }
+.es-scrubber .ticks { position:absolute; left:12px; right:12px; top:6px; height:12px; display:flex; justify-content:space-between; pointer-events:none; }
+.es-scrubber .ticks span { width:1px; height:6px; background: var(--ink-60); }
+.es-scrubber .ticks span:nth-child(5n+1) { height:12px; background: var(--ink-40); }
+.es-scrubber .clips { position:absolute; left:12px; right:12px; top:26px; height:34px; display:flex; gap:1px; pointer-events:none; }
+.es-scrubber .clip { border:1px solid var(--ink); }
+.es-scrubber .head { position:absolute; top:10px; bottom:10px; width:2px; background: var(--cream); }
+
+/* metadata dl */
+.es-meta-dl { display:grid; grid-template-columns: 1fr 1fr; row-gap:10px; column-gap:16px; font-family: var(--font-mono); font-size:12px; letter-spacing:0.04em; margin:0; }
+.es-meta-dl dt { color: var(--ink-40); }
+.es-meta-dl dd { margin:0; color: var(--cream); }
+
+/* Selection */
+::selection { background: var(--ink); color: var(--cream); }
+
+/* ============================================================
+   GRAIN OVER CARDS — film emulsion texture
+   ============================================================ */
+.frame-card, .es-monitor, .es-reel, .reel-card {
+  position: relative;
+}
+.frame-card::after,
+.es-monitor::after,
+.es-reel::after {
+  /* note: .frame-card already uses ::after for the bottom-right bracket on DS cards;
+     here in the website kit frame-card's brackets come from ::before/::after defined
+     in this file — so grain is applied via a dedicated child instead. see .grain-layer */
+}
+.grain-layer {
+  position: absolute; inset: 0; pointer-events: none; z-index: 6;
+  opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  animation: grain-shift 0.6s steps(3) infinite;
+}
+.es-monitor .grain-layer, .es-reel .thumb .grain-layer { opacity: 0.12; mix-blend-mode: soft-light; }
+@keyframes grain-shift {
+  0% { transform: translate(0,0); }
+  33% { transform: translate(-6%, 4%); }
+  66% { transform: translate(4%, -5%); }
+  100% { transform: translate(0,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grain-layer { animation: none; }
+}
+
+/* ============================================================
+   CUSTOM CURSOR — film viewfinder reticle
+   ============================================================ */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, [role="button"], .es-reel, .frame-card, input, textarea, select { cursor: none; }
+  input, textarea { caret-color: var(--ink); }
+}
+.cursor-reticle {
+  position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
+  width: 30px; height: 30px; margin: -15px 0 0 -15px;
+  transition: width 180ms var(--ease-mech), height 180ms var(--ease-mech),
+              margin 180ms var(--ease-mech), opacity 180ms var(--ease-mech);
+  mix-blend-mode: difference;
+}
+.cursor-reticle .c-line { position: absolute; background: #fff; }
+.cursor-reticle .c-tl, .cursor-reticle .c-tr, .cursor-reticle .c-bl, .cursor-reticle .c-br { position: absolute; width: 7px; height: 7px; }
+.cursor-reticle .c-tl { top: 0; left: 0; border-top: 1.5px solid #fff; border-left: 1.5px solid #fff; }
+.cursor-reticle .c-tr { top: 0; right: 0; border-top: 1.5px solid #fff; border-right: 1.5px solid #fff; }
+.cursor-reticle .c-bl { bottom: 0; left: 0; border-bottom: 1.5px solid #fff; border-left: 1.5px solid #fff; }
+.cursor-reticle .c-br { bottom: 0; right: 0; border-bottom: 1.5px solid #fff; border-right: 1.5px solid #fff; }
+.cursor-dot {
+  position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
+  width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 999px;
+  background: var(--signal);
+  transition: transform 80ms linear;
+}
+/* hover state — frame opens up, like racking focus */
+.cursor-reticle.is-hot { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+.cursor-reticle.is-down { width: 22px; height: 22px; margin: -11px 0 0 -11px; }
+.cursor-hidden { opacity: 0; }
+
+/* ============================================================
+   PAGE TRANSITION — letterbox slam + frame-advance entrance
+   ============================================================ */
+.page-fx { position: fixed; inset: 0; z-index: 9000; pointer-events: none; }
+.page-fx .bar { position: absolute; left: 0; right: 0; height: 50%; background: #000; transform: scaleY(0); transition: transform 260ms var(--ease-mech); }
+.page-fx .bar.top { top: 0; transform-origin: top; }
+.page-fx .bar.bottom { bottom: 0; transform-origin: bottom; }
+.page-fx.closing .bar { transform: scaleY(1); }
+.page-fx .fx-readout {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.3em; color: var(--cream);
+  text-transform: uppercase; opacity: 0; transition: opacity 200ms var(--ease-mech);
+  display: flex; align-items: center; gap: 10px;
+}
+.page-fx.closing .fx-readout { opacity: 1; }
+
+/* screen entrance — transform-only frame-advance (never holds opacity:0,
+   so content stays visible even if the animation is frozen/backgrounded) */
+.screen-enter { animation: screen-in 480ms var(--ease-mech) both; }
+@keyframes screen-in {
+  from { transform: translateY(14px); }
+  to   { transform: translateY(0); }
+}
+/* staggered reveal of sections / cards as they scroll in */
+body.js-reveal [data-reveal] { opacity: 0; transform: translateY(18px); }
+body.js-reveal [data-reveal].is-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 560ms var(--ease-mech), transform 560ms var(--ease-mech);
+}
+/* when the tab is hidden (animations/transitions freeze at frame 0), bypass the
+   fade entirely so content is never stuck invisible */
+body.fx-force [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .screen-enter { animation: none; }
+  body.js-reveal [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .page-fx .bar { transition: none; }
+}
+
+</style>
+<script>
+/**
+ * <image-slot> — user-fillable image placeholder.
+ *
+ * Drop this into a deck, mockup, or page wherever you want the user to
+ * supply an image. You control the slot's shape and size; the user fills it
+ * by dragging an image file onto it (or clicking to browse). The dropped
+ * image persists across reloads via a .image-slots.state.json sidecar —
+ * same read-via-fetch / write-via-window.omelette pattern as
+ * design_canvas.jsx, so the filled slot shows on share links, downloaded
+ * zips, and PPTX export. Outside the omelette runtime the slot is read-only.
+ *
+ * The host bridge only allows sidecar writes at the project root, so the
+ * HTML that uses this component is assumed to live at the project root too
+ * (same constraint as design_canvas.jsx).
+ *
+ * Attributes:
+ *   id           Persistence key. REQUIRED for the drop to survive reload —
+ *                every slot on the page needs a distinct id.
+ *   shape        'rect' | 'rounded' | 'circle' | 'pill'   (default 'rounded')
+ *                'circle' applies 50% border-radius; on a non-square slot
+ *                that's an ellipse — set equal width and height for a true
+ *                circle.
+ *   radius       Corner radius in px for 'rounded'.       (default 12)
+ *   mask         Any CSS clip-path value. Overrides `shape` — use this for
+ *                hexagons, blobs, arbitrary polygons.
+ *   fit          object-fit: cover | contain | fill.       (default 'cover')
+ *                With cover (the default) double-clicking the filled slot
+ *                enters a reframe mode: the whole image spills past the mask
+ *                (translucent outside, opaque inside), drag to reposition,
+ *                corner-drag to scale. The crop persists alongside the image
+ *                in the sidecar. contain/fill stay static.
+ *   position     object-position for fit=contain|fill.     (default '50% 50%')
+ *   placeholder  Empty-state caption.                      (default 'Drop an image')
+ *   src          Optional initial/fallback image URL. A user drop overrides
+ *                it; clearing the drop reveals src again.
+ *
+ * Size and layout come from ordinary CSS on the element — width/height
+ * inline or from a parent grid — so it composes with any layout.
+ *
+ * Usage:
+ *   <script src="image-slot.js"><\/script>
+ *   <image-slot id="hero"   style="width:800px;height:450px" shape="rounded" radius="20"
+ *               placeholder="Drop a hero image"></image-slot>
+ *   <image-slot id="avatar" style="width:120px;height:120px" shape="circle"></image-slot>
+ *   <image-slot id="kite"   style="width:300px;height:300px"
+ *               mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)"></image-slot>
+ */
+
+(() => {
+  const STATE_FILE = '.image-slots.state.json';
+  // 2× a ~600px slot in a 1920-wide deck — retina-sharp without making the
+  // sidecar enormous. A 1200px WebP at q=0.85 is ~150-300KB.
+  const MAX_DIM = 1200;
+  // Raster formats only. SVG is excluded (can carry script; createImageBitmap
+  // on SVG blobs is inconsistent). GIF is excluded because the canvas
+  // re-encode keeps only the first frame, so an animated GIF would silently
+  // go still — better to reject than surprise.
+  const ACCEPT = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
+
+  // ── Shared sidecar store ────────────────────────────────────────────────
+  // One fetch + immediate write-on-change for every <image-slot> on the
+  // page. Reads via fetch() so viewing works anywhere the HTML and sidecar
+  // are served together; writes go through window.omelette.writeFile, which
+  // the host allowlists to *.state.json basenames only.
+  const subs = new Set();
+  let slots = {};
+  // ids explicitly cleared before the sidecar fetch resolved — otherwise
+  // the merge below can't tell "never set" from "just deleted" and would
+  // resurrect the sidecar's stale value.
+  const tombstones = new Set();
+  let loaded = false;
+  let loadP = null;
+
+  function load() {
+    if (loadP) return loadP;
+    loadP = fetch(STATE_FILE)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        // Merge: sidecar loses to any in-memory change that raced ahead of
+        // the fetch (drop or clear) so neither is clobbered by hydration.
+        if (j && typeof j === 'object') {
+          const merged = Object.assign({}, j, slots);
+          // A framing-only write that raced ahead of hydration must not
+          // drop a user image that's only on disk — inherit u from the
+          // sidecar for any in-memory entry that lacks one.
+          for (const k in slots) {
+            if (merged[k] && !merged[k].u && j[k]) {
+              merged[k].u = typeof j[k] === 'string' ? j[k] : j[k].u;
+            }
+          }
+          for (const id of tombstones) delete merged[id];
+          slots = merged;
+        }
+        tombstones.clear();
+      })
+      .catch(() => {})
+      .then(() => { loaded = true; subs.forEach((fn) => fn()); });
+    return loadP;
+  }
+
+  // Serialize writes so two near-simultaneous drops on different slots
+  // can't reorder at the backend and leave the sidecar with only the
+  // first. A save requested mid-flight just marks dirty and re-fires on
+  // completion with the then-current slots.
+  let saving = false;
+  let saveDirty = false;
+  function save() {
+    if (saving) { saveDirty = true; return; }
+    const w = window.omelette && window.omelette.writeFile;
+    if (!w) return;
+    saving = true;
+    Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
+      .catch(() => {})
+      .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
+  }
+
+  const S_MAX = 5;
+  const clampS = (s) => Math.max(1, Math.min(S_MAX, s));
+
+  // Normalize a stored slot value. Pre-reframe sidecars stored a bare
+  // data-URL string; newer ones store {u, s, x, y}. Either shape is valid.
+  function getSlot(id) {
+    const v = slots[id];
+    if (!v) return null;
+    return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
+  }
+
+  function setSlot(id, val) {
+    if (!id) return;
+    if (val) { slots[id] = val; tombstones.delete(id); }
+    else { delete slots[id]; if (!loaded) tombstones.add(id); }
+    subs.forEach((fn) => fn());
+    // A drop is rare + high-value — write immediately so nav-away can't lose
+    // it. Gate on the initial read so we don't overwrite a sidecar we haven't
+    // merged yet; the merge in load() keeps this change once the read lands.
+    if (loaded) save(); else load().then(save);
+  }
+
+  // ── Image downscale ─────────────────────────────────────────────────────
+  // Encode through a canvas so the sidecar carries resized bytes, not the
+  // raw upload. Longest side is capped at 2× the slot's rendered width
+  // (retina) and at MAX_DIM. WebP keeps alpha and is ~10× smaller than PNG
+  // for photos, so there's no need for per-image format picking.
+  async function toDataUrl(file, targetW) {
+    const bitmap = await createImageBitmap(file);
+    try {
+      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
+      const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
+      const w = Math.max(1, Math.round(bitmap.width * scale));
+      const h = Math.max(1, Math.round(bitmap.height * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+      return canvas.toDataURL('image/webp', 0.85);
+    } finally {
+      bitmap.close && bitmap.close();
+    }
+  }
+
+  // ── Custom element ──────────────────────────────────────────────────────
+  const stylesheet =
+    ':host{display:inline-block;position:relative;vertical-align:top;' +
+    '  font:13px/1.3 system-ui,-apple-system,sans-serif;color:rgba(0,0,0,.55);width:240px;height:160px}' +
+    '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(0,0,0,.04)}' +
+    // .frame img (clipped) and .spill (unclipped ghost + handles) share the
+    // same left/top/width/height in frame-%, computed by _applyView(), so the
+    // inside-mask crop and the outside-mask spill stay pixel-aligned.
+    '.frame img{position:absolute;max-width:none;transform:translate(-50%,-50%);' +
+    '  -webkit-user-drag:none;user-select:none;touch-action:none}' +
+    // Reframe mode (double-click): the full image spills past the mask. The
+    // spill layer is sized to the IMAGE bounds so its corners are where the
+    // resize handles belong. The ghost <img> inside is translucent; the real
+    // clipped <img> underneath shows the opaque in-mask crop.
+    '.spill{position:absolute;transform:translate(-50%,-50%);display:none;z-index:1;' +
+    '  cursor:grab;touch-action:none}' +
+    ':host([data-panning]) .spill{cursor:grabbing}' +
+    '.spill .ghost{position:absolute;inset:0;width:100%;height:100%;opacity:.35;' +
+    '  pointer-events:none;-webkit-user-drag:none;user-select:none;' +
+    '  box-shadow:0 0 0 1px rgba(0,0,0,.2),0 12px 32px rgba(0,0,0,.2)}' +
+    '.spill .handle{position:absolute;width:12px;height:12px;border-radius:50%;' +
+    '  background:#fff;box-shadow:0 0 0 1.5px #c96442,0 1px 3px rgba(0,0,0,.3);' +
+    '  transform:translate(-50%,-50%)}' +
+    '.spill .handle[data-c=nw]{left:0;top:0;cursor:nwse-resize}' +
+    '.spill .handle[data-c=ne]{left:100%;top:0;cursor:nesw-resize}' +
+    '.spill .handle[data-c=sw]{left:0;top:100%;cursor:nesw-resize}' +
+    '.spill .handle[data-c=se]{left:100%;top:100%;cursor:nwse-resize}' +
+    ':host([data-reframe]){z-index:10}' +
+    ':host([data-reframe]) .spill{display:block}' +
+    ':host([data-reframe]) .frame{box-shadow:0 0 0 2px #c96442}' +
+    '.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;' +
+    '  justify-content:center;gap:6px;text-align:center;padding:12px;box-sizing:border-box;' +
+    '  cursor:pointer;user-select:none}' +
+    '.empty svg{opacity:.45}' +
+    '.empty .cap{max-width:90%;font-weight:500;letter-spacing:.01em}' +
+    '.empty .sub{font-size:11px}' +
+    '.empty .sub u{text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.25)}' +
+    '.empty:hover .sub u{color:rgba(0,0,0,.75);text-decoration-color:currentColor}' +
+    ':host([data-over]) .frame{outline:2px solid #c96442;outline-offset:-2px;' +
+    '  background:rgba(201,100,66,.10)}' +
+    '.ring{position:absolute;inset:0;pointer-events:none;border:1.5px dashed rgba(0,0,0,.25);' +
+    '  transition:border-color .12s}' +
+    ':host([data-over]) .ring{border-color:#c96442}' +
+    ':host([data-filled]) .ring{display:none}' +
+    // Controls sit BELOW the mask (top:100%), absolutely positioned so the
+    // author-declared slot height is unaffected. The gap is padding, not a
+    // top offset, so the hover target stays contiguous with the frame.
+    '.ctl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;' +
+    '  display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:2;' +
+    '  white-space:nowrap}' +
+    ':host([data-filled][data-editable]:hover) .ctl,:host([data-reframe]) .ctl' +
+    '  {opacity:1;pointer-events:auto}' +
+    '.ctl button{appearance:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;' +
+    '  background:rgba(0,0,0,.65);color:#fff;font:11px/1 system-ui,-apple-system,sans-serif;' +
+    '  backdrop-filter:blur(6px)}' +
+    '.ctl button:hover{background:rgba(0,0,0,.8)}' +
+    '.err{position:absolute;left:8px;bottom:8px;right:8px;color:#b3261e;font-size:11px;' +
+    '  background:rgba(255,255,255,.85);padding:4px 6px;border-radius:5px;pointer-events:none}';
+
+  const icon =
+    '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>' +
+    '<path d="m21 15-5-5L5 21"/></svg>';
+
+  class ImageSlot extends HTMLElement {
+    static get observedAttributes() {
+      return ['shape', 'radius', 'mask', 'fit', 'position', 'placeholder', 'src', 'id'];
+    }
+
+    constructor() {
+      super();
+      const root = this.attachShadow({ mode: 'open' });
+      // .spill and .ctl sit OUTSIDE .frame so overflow:hidden + border-radius
+      // on the frame (circle, pill, rounded) can't clip them.
+      root.innerHTML =
+        '<style>' + stylesheet + '</style>' +
+        '<div class="frame" part="frame">' +
+        '  <img part="image" alt="" draggable="false" style="display:none">' +
+        '  <div class="empty" part="empty">' + icon +
+        '    <div class="cap"></div>' +
+        '    <div class="sub">or <u>browse files</u></div></div>' +
+        '  <div class="ring" part="ring"></div>' +
+        '</div>' +
+        '<div class="spill">' +
+        '  <img class="ghost" alt="" draggable="false">' +
+        '  <div class="handle" data-c="nw"></div><div class="handle" data-c="ne"></div>' +
+        '  <div class="handle" data-c="sw"></div><div class="handle" data-c="se"></div>' +
+        '</div>' +
+        '<div class="ctl"><button data-act="replace" title="Replace image">Replace</button>' +
+        '  <button data-act="clear" title="Remove image">Remove</button></div>' +
+        '<input type="file" accept="' + ACCEPT.join(',') + '" hidden>';
+      this._frame = root.querySelector('.frame');
+      this._ring = root.querySelector('.ring');
+      this._img = root.querySelector('.frame img');
+      this._empty = root.querySelector('.empty');
+      this._cap = root.querySelector('.cap');
+      this._sub = root.querySelector('.sub');
+      this._spill = root.querySelector('.spill');
+      this._ghost = root.querySelector('.ghost');
+      this._err = null;
+      this._input = root.querySelector('input');
+      this._depth = 0;
+      this._gen = 0;
+      this._view = { s: 1, x: 0, y: 0 };
+      this._subFn = () => this._render();
+      // Shadow-DOM listeners live with the shadow DOM — bound once here so
+      // disconnect/reconnect (e.g. React remount) doesn't stack handlers.
+      this._empty.addEventListener('click', () => this._input.click());
+      root.addEventListener('click', (e) => {
+        const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
+        if (act === 'replace') { this._exitReframe(true); this._input.click(); }
+        if (act === 'clear') {
+          this._exitReframe(false);
+          this._gen++;
+          this._local = null;
+          if (this.id) setSlot(this.id, null); else this._render();
+        }
+      });
+      this._input.addEventListener('change', () => {
+        const f = this._input.files && this._input.files[0];
+        if (f) this._ingest(f);
+        this._input.value = '';
+      });
+      // naturalWidth/Height aren't known until load — re-apply so the cover
+      // baseline is computed from real dimensions, not the 100%×100% fallback.
+      this._img.addEventListener('load', () => this._applyView());
+      // Gated on editable + fit=cover so share links and contain/fill slots
+      // stay static.
+      this.addEventListener('dblclick', (e) => {
+        if (!this.hasAttribute('data-editable') || !this._reframes()) return;
+        e.preventDefault();
+        if (this.hasAttribute('data-reframe')) this._exitReframe(true);
+        else this._enterReframe();
+      });
+      // Pan + resize both originate on the spill layer. A handle pointerdown
+      // drives an aspect-locked resize anchored at the opposite corner; any
+      // other pointerdown on the spill pans. Offsets are frame-% so a
+      // reframed slot survives responsive resize / PPTX export.
+      this._spill.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || !this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        this._spill.setPointerCapture(e.pointerId);
+        const rect = this.getBoundingClientRect();
+        const fw = rect.width || 1, fh = rect.height || 1;
+        const corner = e.target.getAttribute && e.target.getAttribute('data-c');
+        let move;
+        if (corner) {
+          // Resize about the OPPOSITE corner. Viewport-px throughout (rect
+          // fw/fh, not clientWidth) so the math survives a transform:scale()
+          // ancestor — deck_stage renders slides scaled-to-fit.
+          const iw = this._img.naturalWidth || 1, ih = this._img.naturalHeight || 1;
+          const base = Math.max(fw / iw, fh / ih);
+          const sx = corner.includes('e') ? 1 : -1;
+          const sy = corner.includes('s') ? 1 : -1;
+          const s0 = this._view.s;
+          const w0 = iw * base * s0, h0 = ih * base * s0;
+          const cx0 = (50 + this._view.x) / 100 * fw;
+          const cy0 = (50 + this._view.y) / 100 * fh;
+          const ox = cx0 - sx * w0 / 2, oy = cy0 - sy * h0 / 2;
+          const diag0 = Math.hypot(w0, h0);
+          const ux = sx * w0 / diag0, uy = sy * h0 / diag0;
+          move = (ev) => {
+            const proj = (ev.clientX - rect.left - ox) * ux +
+                         (ev.clientY - rect.top - oy) * uy;
+            const s = clampS(s0 * proj / diag0);
+            const d = diag0 * s / s0;
+            this._view.s = s;
+            this._view.x = (ox + ux * d / 2) / fw * 100 - 50;
+            this._view.y = (oy + uy * d / 2) / fh * 100 - 50;
+            this._clampView();
+            this._applyView();
+          };
+        } else {
+          this.setAttribute('data-panning', '');
+          const start = { px: e.clientX, py: e.clientY, x: this._view.x, y: this._view.y };
+          move = (ev) => {
+            this._view.x = start.x + (ev.clientX - start.px) / fw * 100;
+            this._view.y = start.y + (ev.clientY - start.py) / fh * 100;
+            this._clampView();
+            this._applyView();
+          };
+        }
+        const up = () => {
+          try { this._spill.releasePointerCapture(e.pointerId); } catch {}
+          this._spill.removeEventListener('pointermove', move);
+          this._spill.removeEventListener('pointerup', up);
+          this._spill.removeEventListener('pointercancel', up);
+          this.removeAttribute('data-panning');
+          this._dragUp = null;
+        };
+        // Stashed so _exitReframe (Escape / outside-click mid-drag) can
+        // tear the capture + listeners down synchronously.
+        this._dragUp = up;
+        this._spill.addEventListener('pointermove', move);
+        this._spill.addEventListener('pointerup', up);
+        this._spill.addEventListener('pointercancel', up);
+      });
+      // Wheel zoom stays available inside reframe mode as a trackpad nicety —
+      // zooms toward the cursor (offset' = cursor·(1-k) + offset·k).
+      this.addEventListener('wheel', (e) => {
+        if (!this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        const r = this.getBoundingClientRect();
+        const cx = (e.clientX - r.left) / r.width * 100 - 50;
+        const cy = (e.clientY - r.top) / r.height * 100 - 50;
+        const prev = this._view.s;
+        const next = clampS(prev * Math.pow(1.0015, -e.deltaY));
+        if (next === prev) return;
+        const k = next / prev;
+        this._view.s = next;
+        this._view.x = cx * (1 - k) + this._view.x * k;
+        this._view.y = cy * (1 - k) + this._view.y * k;
+        this._clampView();
+        this._applyView();
+      }, { passive: false });
+    }
+
+    connectedCallback() {
+      // Warn once per page — an id-less slot works for the session but
+      // cannot persist, and two id-less slots would share nothing.
+      if (!this.id && !ImageSlot._warned) {
+        ImageSlot._warned = true;
+        console.warn('<image-slot> without an id will not persist its dropped image.');
+      }
+      this.addEventListener('dragenter', this);
+      this.addEventListener('dragover', this);
+      this.addEventListener('dragleave', this);
+      this.addEventListener('drop', this);
+      subs.add(this._subFn);
+      // width%/height% in _applyView encode the frame aspect at call time —
+      // a host resize (responsive grid, pane divider) would stretch the
+      // image until the next _render. Re-render on size change: _render()
+      // re-seeds _view from stored before clamp/apply, so a shrink→grow
+      // cycle round-trips instead of ratcheting x/y toward the narrower
+      // frame's clamp range.
+      this._ro = new ResizeObserver(() => this._render());
+      this._ro.observe(this);
+      load();
+      this._render();
+    }
+
+    disconnectedCallback() {
+      subs.delete(this._subFn);
+      this.removeEventListener('dragenter', this);
+      this.removeEventListener('dragover', this);
+      this.removeEventListener('dragleave', this);
+      this.removeEventListener('drop', this);
+      if (this._ro) { this._ro.disconnect(); this._ro = null; }
+      this._exitReframe(false);
+    }
+
+    _enterReframe() {
+      if (this.hasAttribute('data-reframe')) return;
+      this.setAttribute('data-reframe', '');
+      this._applyView();
+      // Close on click outside (the spill handler stopPropagation()s so
+      // in-image drags don't reach this) and on Escape. Listeners are held
+      // on the instance so _exitReframe / disconnectedCallback can detach
+      // exactly what was attached.
+      this._outside = (e) => {
+        if (e.composedPath && e.composedPath().includes(this)) return;
+        this._exitReframe(true);
+      };
+      this._esc = (e) => { if (e.key === 'Escape') this._exitReframe(true); };
+      document.addEventListener('pointerdown', this._outside, true);
+      document.addEventListener('keydown', this._esc, true);
+    }
+
+    _exitReframe(commit) {
+      if (!this.hasAttribute('data-reframe')) return;
+      if (this._dragUp) this._dragUp();
+      this.removeAttribute('data-reframe');
+      this.removeAttribute('data-panning');
+      if (this._outside) document.removeEventListener('pointerdown', this._outside, true);
+      if (this._esc) document.removeEventListener('keydown', this._esc, true);
+      this._outside = this._esc = null;
+      if (commit) this._commitView();
+    }
+
+    attributeChangedCallback() { if (this.shadowRoot) this._render(); }
+
+    // handleEvent — one listener object for all four drag events keeps the
+    // add/remove symmetric and the depth counter correct.
+    handleEvent(e) {
+      if (e.type === 'dragenter' || e.type === 'dragover') {
+        // Without preventDefault the browser never fires 'drop'.
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+        if (e.type === 'dragenter') this._depth++;
+        this.setAttribute('data-over', '');
+      } else if (e.type === 'dragleave') {
+        // dragenter/leave fire for every descendant crossing — count depth
+        // so hovering the icon inside the empty state doesn't flicker.
+        if (--this._depth <= 0) { this._depth = 0; this.removeAttribute('data-over'); }
+      } else if (e.type === 'drop') {
+        e.preventDefault();
+        e.stopPropagation();
+        this._depth = 0;
+        this.removeAttribute('data-over');
+        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (f) this._ingest(f);
+      }
+    }
+
+    async _ingest(file) {
+      this._setError(null);
+      if (!file || ACCEPT.indexOf(file.type) < 0) {
+        this._setError('Drop a PNG, JPEG, WebP, or AVIF image.');
+        return;
+      }
+      // toDataUrl can take hundreds of ms on a large photo. A Clear or a
+      // newer drop during that window would be clobbered when this await
+      // resumes — bump + capture a generation so stale encodes bail.
+      const gen = ++this._gen;
+      try {
+        const w = this.clientWidth || this.offsetWidth || MAX_DIM;
+        const url = await toDataUrl(file, w);
+        if (gen !== this._gen) return;
+        // Only exit reframe once the new image is in hand — a rejected type
+        // or decode failure leaves the in-progress crop untouched.
+        this._exitReframe(false);
+        const val = { u: url, s: 1, x: 0, y: 0 };
+        setSlot(this.id || '', val);
+        // Keep a session-local copy for id-less slots so the drop still
+        // shows, even though it cannot persist.
+        if (!this.id) { this._local = val; this._render(); }
+      } catch (err) {
+        if (gen !== this._gen) return;
+        this._setError('Could not read that image.');
+        console.warn('<image-slot> ingest failed:', err);
+      }
+    }
+
+    _setError(msg) {
+      if (this._err) { this._err.remove(); this._err = null; }
+      if (!msg) return;
+      const d = document.createElement('div');
+      d.className = 'err'; d.textContent = msg;
+      this.shadowRoot.appendChild(d);
+      this._err = d;
+      setTimeout(() => { if (this._err === d) { d.remove(); this._err = null; } }, 3000);
+    }
+
+    // Reframing (pan/resize) is only meaningful for fit=cover — contain/fill
+    // keep the old object-fit path and double-click is a no-op.
+    _reframes() {
+      return this.hasAttribute('data-filled') &&
+        (this.getAttribute('fit') || 'cover') === 'cover';
+    }
+
+    // Cover-baseline geometry, shared by clamp/apply/resize. Null until the
+    // img has loaded (naturalWidth is 0 before that) or when the slot has no
+    // layout box — ResizeObserver fires with a 0×0 rect under display:none,
+    // and clamping against a degenerate 1×1 frame would silently pull the
+    // stored pan toward zero.
+    _geom() {
+      const iw = this._img.naturalWidth, ih = this._img.naturalHeight;
+      const fw = this.clientWidth, fh = this.clientHeight;
+      if (!iw || !ih || !fw || !fh) return null;
+      return { iw, ih, fw, fh, base: Math.max(fw / iw, fh / ih) };
+    }
+
+    _clampView() {
+      // Pan range on each axis is half the overflow past the frame edge.
+      const g = this._geom();
+      if (!g) return;
+      const mx = Math.max(0, (g.iw * g.base * this._view.s / g.fw - 1) * 50);
+      const my = Math.max(0, (g.ih * g.base * this._view.s / g.fh - 1) * 50);
+      this._view.x = Math.max(-mx, Math.min(mx, this._view.x));
+      this._view.y = Math.max(-my, Math.min(my, this._view.y));
+    }
+
+    _applyView() {
+      const g = this._geom();
+      const fit = this.getAttribute('fit') || 'cover';
+      if (fit !== 'cover' || !g) {
+        // Non-cover, or dimensions not known yet (before img load).
+        this._img.style.width = '100%';
+        this._img.style.height = '100%';
+        this._img.style.left = '50%';
+        this._img.style.top = '50%';
+        this._img.style.objectFit = fit;
+        this._img.style.objectPosition = this.getAttribute('position') || '50% 50%';
+        return;
+      }
+      // Cover baseline: img fills the frame on its tighter axis at s=1, so
+      // pan works immediately on the overflowing axis without zooming first.
+      // Width/height and left/top are all frame-% — depends only on the
+      // frame aspect ratio, so a responsive resize keeps the same crop. The
+      // spill layer mirrors the same box so its corners = image corners.
+      const k = g.base * this._view.s;
+      const w = (g.iw * k / g.fw * 100) + '%';
+      const h = (g.ih * k / g.fh * 100) + '%';
+      const l = (50 + this._view.x) + '%';
+      const t = (50 + this._view.y) + '%';
+      this._img.style.width = w; this._img.style.height = h;
+      this._img.style.left = l; this._img.style.top = t;
+      this._img.style.objectFit = '';
+      this._spill.style.width = w; this._spill.style.height = h;
+      this._spill.style.left = l; this._spill.style.top = t;
+    }
+
+    _commitView() {
+      const v = { s: this._view.s, x: this._view.x, y: this._view.y };
+      if (this._userUrl) v.u = this._userUrl;
+      // Framing-only (no u) persists too so an author-src slot remembers its
+      // crop; clearing the sidecar still falls through to src=.
+      if (this.id) setSlot(this.id, v);
+      else { this._local = v; }
+    }
+
+    _render() {
+      // Shape / mask. Presets use border-radius so the dashed ring can
+      // follow the rounded outline; clip-path is only applied for an
+      // explicit `mask` (the ring is hidden there since a rectangle
+      // dashed border chopped by an arbitrary polygon looks broken).
+      const mask = this.getAttribute('mask');
+      const shape = (this.getAttribute('shape') || 'rounded').toLowerCase();
+      let radius = '';
+      if (shape === 'circle') radius = '50%';
+      else if (shape === 'pill') radius = '9999px';
+      else if (shape === 'rounded') {
+        const n = parseFloat(this.getAttribute('radius'));
+        radius = (Number.isFinite(n) ? n : 12) + 'px';
+      }
+      this._frame.style.borderRadius = mask ? '' : radius;
+      this._frame.style.clipPath = mask || '';
+      this._ring.style.borderRadius = mask ? '' : radius;
+      this._ring.style.display = mask ? 'none' : '';
+
+      // Controls and reframe entry gate on this so share links stay read-only.
+      const editable = !!(window.omelette && window.omelette.writeFile);
+      this.toggleAttribute('data-editable', editable);
+      this._sub.style.display = editable ? '' : 'none';
+
+      // Content. The sidecar is also writable by the agent's write_file
+      // tool, so its value isn't guaranteed canvas-originated — only accept
+      // data:image/ URLs from it. The `src` attribute is author-controlled
+      // (Claude wrote it into the HTML) so it passes through unchanged.
+      let stored = this.id ? getSlot(this.id) : this._local;
+      if (stored && stored.u && !/^data:image\//i.test(stored.u)) stored = null;
+      const srcAttr = this.getAttribute('src') || '';
+      this._userUrl = (stored && stored.u) || null;
+      const url = this._userUrl || srcAttr;
+      // Don't clobber an in-flight reframe with a store-triggered re-render.
+      if (!this.hasAttribute('data-reframe')) {
+        this._view = {
+          s: stored && Number.isFinite(stored.s) ? clampS(stored.s) : 1,
+          x: stored && Number.isFinite(stored.x) ? stored.x : 0,
+          y: stored && Number.isFinite(stored.y) ? stored.y : 0,
+        };
+      }
+      this._cap.textContent = this.getAttribute('placeholder') || 'Drop an image';
+      // Toggle via style.display — the [hidden] attribute alone loses to
+      // the display:flex / display:block rules in the stylesheet above.
+      if (url) {
+        if (this._img.getAttribute('src') !== url) {
+          this._img.src = url;
+          this._ghost.src = url;
+        }
+        this._img.style.display = 'block';
+        this._empty.style.display = 'none';
+        this.setAttribute('data-filled', '');
+        this._clampView();
+        this._applyView();
+      } else {
+        this._img.style.display = 'none';
+        this._img.removeAttribute('src');
+        this._ghost.removeAttribute('src');
+        this._empty.style.display = 'flex';
+        this.removeAttribute('data-filled');
+      }
+    }
+  }
+
+  if (!customElements.get('image-slot')) {
+    customElements.define('image-slot', ImageSlot);
+  }
+})();
+
+</script>
+<script>
+// External links: open reliably even when the page is embedded (preview/iframe) and popups are restricted.
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="http"]');
+  if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  e.preventDefault();
+  var w = null;
+  try { w = window.open(a.href, '_blank'); if (w) w.opener = null; } catch (err) {}
+  if (!w) { try { window.top.location.href = a.href; } catch (err) { window.location.href = a.href; } }
+}, true);
+</script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#7A1E1E"/><text x="50" y="64" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="44" fill="#F3EBDD">M</text></svg></template>
+<div id="app"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">
+/* global React */
+const QUOTES = {
+  wasseypur: { q: 'Humans only come as one of two species: one is wicked, and the other is stupid.', film: 'Gangs of Wasseypur', year: '2012' },
+  willow:    { q: "Tell me what's worth seeing, and I will tell you what's not worth seeing. Ever since I have practiced not seeing, I have seen many wonderful things.", film: 'The Willow Tree', year: '2005' },
+  cityofgod: { q: 'Justice being taken away, then, what are kingdoms but great robberies?', film: 'City of God', year: '2002' },
+  khuda:     { q: 'We keep haram money in our pockets and go out in search for a halal meat shop.', film: 'Khuda Kay Liye', year: '2007' },
+  howl:      { q: "A heart's a heavy burden.", film: "Howl's Moving Castle", year: '2004' },
+  wadjda:    { q: 'I want you to be the happiest person in the world.', film: 'Wadjda', year: '2012' },
+  square:    { q: 'I just decided to walk in the middle of the road; no more walking by the sidelines.', film: 'The Square', year: '2013' },
+  chico:     { q: "Business? That's my business!", film: 'Chico and Rita', year: '2010' },
+  basanti:   { q: 'No country is perfect, it has to be made perfect.', film: 'Rang De Basanti', year: '2006' },
+  tsotsi:    { q: 'You can only see broken glass. I see colour. Light.', film: 'Tsotsi', year: '2005' },
+  reluctant: { q: 'Do not be frightened by my beard: I am a lover of America.', film: 'The Reluctant Fundamentalist', year: '2012' },
+  omar:      { q: "So the hunters come closer, and the monkey sees them coming. They throw their nets, and the damn monkey still won't drop the sugar.", film: 'Omar', year: '2013' },
+  parasite:  { q: 'Rich people are naive. No resentments. No creases on them.', film: 'Parasite', year: '2019' },
+  persepolis:{ q: 'You can forgive, but you should never forget.', film: 'Persepolis', year: '2007' },
+};
+const QUOTE_LIST = Object.values(QUOTES);
+
+if (!document.getElementById('quotes-css')) {
+  const st = document.createElement('style'); st.id = 'quotes-css';
+  st.textContent = `
+.sub-burn{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;z-index:6;max-width:640px;width:calc(100% - 64px);text-align:center;pointer-events:none}
+.sub-burn .line{display:inline;font-family:var(--font-sans);font-size:19px;line-height:1.5;color:#F6EFC8;background:rgba(14,13,11,0.72);padding:2px 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone;text-wrap:balance}
+.sub-burn .src{display:block;margin-top:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cream);text-shadow:0 1px 6px rgba(0,0,0,0.9)}
+.sub-burn.swap .line,.sub-burn.swap .src{animation:subIn 420ms var(--ease-mech) both}
+@keyframes subIn{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:none}}
+.sub-track{position:relative;height:22px;margin-top:6px;display:flex;gap:0}
+.sub-track .cue{height:100%;border:1px solid var(--ink-80);border-right:none;display:flex;align-items:center;padding:0 6px;overflow:hidden;font-family:var(--font-mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-40);white-space:nowrap;cursor:pointer;transition:background 180ms var(--ease-mech),color 180ms var(--ease-mech)}
+.sub-track .cue:last-child{border-right:1px solid var(--ink-80)}
+.sub-track .cue.on{background:#F6EFC8;color:var(--ink)}
+.intermission{position:fixed;inset:0;z-index:9000;background:#0A0908;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 900ms ease}
+.intermission.on{opacity:1;pointer-events:auto}
+.intermission .card{position:relative;max-width:820px;padding:72px 80px;border:2px solid #E9E1C9;outline:1px solid #E9E1C9;outline-offset:8px;text-align:center;color:#E9E1C9;animation:flick 3.2s steps(1) infinite}
+.intermission .card::before,.intermission .card::after{content:'❖';position:absolute;left:50%;transform:translateX(-50%);font-size:14px;background:#0A0908;padding:0 12px}
+.intermission .card::before{top:-11px}.intermission .card::after{bottom:-11px}
+.intermission .q{color:#E9E1C9;font-family:var(--font-display);font-style:italic;font-size:46px;line-height:1.12;letter-spacing:-0.02em;margin:0 0 32px;text-wrap:balance}
+.intermission .src{font-family:var(--font-mono);font-size:12px;letter-spacing:0.22em;text-transform:uppercase}
+.intermission .hint{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.22em;color:#8A8371}
+.intermission .burn{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,0.85) 100%)}
+@keyframes flick{0%{opacity:1}12%{opacity:.86}14%{opacity:1}61%{opacity:.92}63%{opacity:1}}
+.crawl{position:relative;height:560px;overflow:hidden;background:var(--ink);color:var(--cream);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
+.crawl .roll{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;align-items:center;gap:56px;padding:0 32px;animation:roll 70s linear infinite}
+.crawl:hover .roll{animation-play-state:paused}
+.crawl .item{max-width:640px;text-align:center}
+.crawl .item .t{font-family:var(--font-mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-20);margin-bottom:12px}
+.crawl .item .q{font-family:var(--font-display);font-style:italic;font-size:30px;line-height:1.2;letter-spacing:-0.015em;text-wrap:balance}
+@keyframes roll{from{transform:translateY(560px)}to{transform:translateY(-100%)}}
+.script-page{background:var(--paper);border:1px solid var(--ink);padding:56px 72px;max-width:680px;font-family:var(--font-mono);font-size:14px;line-height:1.7;color:var(--ink);position:relative}
+.script-page .slug{text-transform:uppercase;font-weight:600;margin-bottom:18px}
+.script-page .act{margin-bottom:22px}
+.script-page .who{margin-left:38%;text-transform:uppercase}
+.script-page .paren{margin-left:30%;color:var(--fg-3)}
+.script-page .dlg{margin:0 18% 0 22%}
+.script-page .pg{position:absolute;top:20px;right:28px;font-size:11px;color:var(--fg-3)}
+.reel-sub{opacity:0;transition:opacity 260ms var(--ease-mech)}.es-monitor:hover .reel-sub{opacity:1}
+.svc-epi{font-family:var(--font-display);font-style:italic;font-size:17px;line-height:1.35;margin:0;max-width:400px;text-wrap:pretty}
+.svc-epi cite{display:block;margin-top:6px;font-style:normal;font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase}
+
+.stray{position:fixed;z-index:8500;max-width:min(440px,calc(100vw - 48px));pointer-events:auto;cursor:default;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.85),0 0 18px rgba(0,0,0,0.6)}
+.stray .q{color:inherit;font-family:var(--font-display);font-style:italic;font-size:26px;line-height:1.2;letter-spacing:-0.01em;margin:0;text-wrap:balance}
+.stray .q .ch{opacity:0;transition:opacity 90ms linear}
+.stray .q .ch.on{opacity:1}
+.stray .q .caret{display:inline-block;width:2px;height:0.9em;background:currentColor;margin-left:3px;vertical-align:-0.08em;animation:strayBlink 900ms steps(1) infinite}
+.stray .src{display:block;margin-top:10px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;opacity:0;transition:opacity 400ms var(--ease-mech)}
+.stray.done .src{opacity:0.8}
+.stray.out{opacity:0;filter:blur(6px);transform:translateY(-6px);transition:opacity 900ms ease,filter 900ms ease,transform 900ms ease}
+.stray:hover .caret{animation:none;opacity:0}
+@keyframes strayBlink{50%{opacity:0}}
+`;
+  document.head.appendChild(st);
+}
+
+// Burned-in subtitle; re-animates whenever the cue changes
+function Subtitle({ quote, style }) {
+  if (!quote) return null;
+  return (
+    <div key={quote.film} className="sub-burn swap" style={style}>
+      <span className="line">{quote.q}</span>
+      <span className="src">— {quote.film} ({quote.year})</span>
+    </div>
+  );
+}
+
+// Projector "intermission" — after idle, the site cuts to a silent-film title card
+function Intermission({ idleMs = 120000 }) {
+  const [on, setOn] = React.useState(false);
+  const [i, setI] = React.useState(() => Math.floor(Math.random() * QUOTE_LIST.length));
+  React.useEffect(() => {
+    let t;
+    const arm = () => { clearTimeout(t); t = setTimeout(() => { setI(n => (n + 1) % QUOTE_LIST.length); setOn(true); }, idleMs); };
+    const wake = () => { setOn(false); arm(); };
+    const evs = ['mousemove', 'keydown', 'scroll', 'touchstart', 'mousedown'];
+    evs.forEach(e => window.addEventListener(e, wake, { passive: true }));
+    arm();
+    return () => { clearTimeout(t); evs.forEach(e => window.removeEventListener(e, wake)); };
+  }, [idleMs]);
+  React.useEffect(() => {
+    if (!on) return;
+    const id = setInterval(() => setI(n => (n + 1) % QUOTE_LIST.length), 7000);
+    return () => clearInterval(id);
+  }, [on]);
+  const q = QUOTE_LIST[i];
+  return (
+    <div className={`intermission ${on ? 'on' : ''}`} aria-hidden={!on}>
+      <div className="burn"></div>
+      <div className="card" key={i}>
+        <p className="q">“{q.q}”</p>
+        <div className="src">{q.film} · {q.year}</div>
+      </div>
+      <div className="hint">— INTERMISSION · MOVE TO RESUME THE REEL —</div>
+    </div>
+  );
+}
+
+// End-credits crawl of every line
+function CreditsCrawl() {
+  const items = QUOTE_LIST;
+  return (
+    <div className="crawl">
+      <div className="roll">
+        <div className="item"><div className="t">Muse Studios presents</div><div className="q" style={{fontSize:44}}>The films that raised us</div></div>
+        {items.map(x => (
+          <div key={x.film} className="item">
+            <div className="t">{x.film} · {x.year}</div>
+            <div className="q">“{x.q}”</div>
+          </div>
+        ))}
+        <div className="item"><div className="t">— Fin —</div></div>
+      </div>
+    </div>
+  );
+}
+
+// A screenplay page that "quotes" a film as if it were dialogue from the shoot
+function ScriptExcerpt({ quote, slug, action, who, paren, page = '14.' }) {
+  return (
+    <div className="script-page">
+      <span className="pg">{page}</span>
+      <div className="slug">{slug}</div>
+      <div className="act">{action}</div>
+      <div className="who">{who}</div>
+      {paren && <div className="paren">({paren})</div>}
+      <div className="dlg">{quote.q}</div>
+      <div className="act" style={{marginTop:22,color:'var(--fg-3)'}}>Overheard on set. Lifted from <i>{quote.film}</i> ({quote.year}).</div>
+    </div>
+  );
+}
+
+
+// Stray subtitle — a line from a film surfaces at a random spot on screen,
+// types itself out like a caption, lingers, then dissolves. Hover holds it.
+function StrayQuotes({ firstMs = 6000, minGap = 14000, maxGap = 26000 }) {
+  const [cur, setCur] = React.useState(null);
+  const [n, setN] = React.useState(0);
+  const [phase, setPhase] = React.useState('type');
+  const held = React.useRef(false);
+  const deck = React.useRef([]);
+  const pick = () => {
+    if (!deck.current.length) deck.current = [...QUOTE_LIST].sort(() => Math.random() - 0.5);
+    return deck.current.pop();
+  };
+  const place = () => {
+    const W = window.innerWidth, H = window.innerHeight, w = Math.min(440, W - 48);
+    const zones = [[0.04, 0.12], [0.55, 0.14], [0.06, 0.62], [0.52, 0.66], [0.3, 0.4]];
+    const [zx, zy] = zones[Math.floor(Math.random() * zones.length)];
+    return { left: Math.max(24, Math.min(W - w - 24, zx * W + Math.random() * 60)), top: Math.max(80, Math.min(H - 200, zy * H + Math.random() * 40)) };
+  };
+  React.useEffect(() => {
+    let t = setTimeout(function spawn() {
+      if (document.hidden) { t = setTimeout(spawn, 4000); return; }
+      setCur({ q: pick(), pos: place(), id: Date.now() }); setN(0); setPhase('type');
+    }, firstMs);
+    window.__strayNext = () => { clearTimeout(t); setCur({ q: pick(), pos: place(), id: Date.now() }); setN(0); setPhase('type'); };
+    window.__straySchedule = () => { clearTimeout(t); t = setTimeout(window.__strayNext, minGap + Math.random() * (maxGap - minGap)); };
+    return () => clearTimeout(t);
+  }, []);
+  React.useEffect(() => {
+    if (!cur) return;
+    const len = cur.q.q.length;
+    if (phase === 'type') {
+      if (n >= len) { setPhase('hold'); return; }
+      const ch = cur.q.q[n];
+      const t = setTimeout(() => setN(n + 1), /[.,;:!?]/.test(ch) ? 260 : 32 + Math.random() * 30);
+      return () => clearTimeout(t);
+    }
+    if (phase === 'hold') {
+      const t = setInterval(() => { if (!held.current) { clearInterval(t); setPhase('out'); } }, 3200 + len * 25);
+      return () => clearInterval(t);
+    }
+    if (phase === 'out') {
+      const t = setTimeout(() => { setCur(null); window.__straySchedule && window.__straySchedule(); }, 950);
+      return () => clearTimeout(t);
+    }
+  }, [cur, n, phase]);
+  if (!cur) return null;
+  const chars = cur.q.q.split('');
+  return (
+    <div key={cur.id} className={`stray ${phase !== 'type' ? 'done' : ''} ${phase === 'out' ? 'out' : ''}`} style={cur.pos}
+      onMouseEnter={() => { held.current = true; }} onMouseLeave={() => { held.current = false; }} aria-live="polite">
+      <p className="q">“{chars.map((c, i) => <span key={i} className={`ch ${i < n ? 'on' : ''}`}>{c}</span>)}{phase === 'type' ? <span className="caret"></span> : '”'}</p>
+      <span className="src">— {cur.q.film} · {cur.q.year}</span>
+    </div>
+  );
+}
+
+Object.assign(window, { QUOTES, QUOTE_LIST, StrayQuotes, Subtitle, Intermission, CreditsCrawl, ScriptExcerpt });
+
+</script>
+<script type="text/babel">
+/* global React */
+const MUSE_EMAIL = 'urooj@musestudios.org';
+const MUSE_MAILTO = 'mailto:' + MUSE_EMAIL;
+const MUSE_LINKS = { imdb: 'https://www.imdb.com/name/nm6360980/', instagram: 'https://www.instagram.com/uroojkamranazmi' };
+
+const HERO_CYCLE = ['we awaken.', 'we shift perspectives.', 'we change beliefs and behaviours.', 'we work at the edge of reality.'];
+
+const PROJECTS = [
+  { idx: 1, numeral: 'I', title: 'Blue', kind: 'Short film', year: '2020', short: 'DOP · EDIT', slotId: 'p1', tag: 'short', prod: 'Arash Visuals Inc.', stills: ['blue-1.png','blue-2.png','blue-3.png'],
+    role: 'Cinematography and editing', recognition: 'Tribeca · Winner, IFVA Hong Kong',
+    body: ['Blue is a short film directed by Danial Khaqan Afzal of Arash Visuals, with Urooj as cinematographer and editor. It was recognised at Tribeca and went on to win at IFVA Hong Kong.'],
+    links: [['Watch', 'https://www.facebook.com/ArashVisualsChicago/videos/998547863916586'], ['Press', 'https://tribune.com.pk/story/2268659/in-conversation-with-the-team-behind-blue-a-kaleidoscope']] },
+  { idx: 2, numeral: 'II', title: 'The Rat Child', kind: 'Short film · 15 min', year: '2018', short: 'DIR · PROD', slotId: 'p2', tag: 'short', stills: ['rat-child-1.png','rat-child-2.png','rat-child-3.png'],
+    role: 'Director and producer',
+    body: ['The Rat Child is a 15-minute short set in a small town in Pakistan, in a world where mysticism, dreams, and curses shape everyday life. It follows a curious boy who becomes trapped inside a shrine and bides his time until he can escape.'],
+    links: [['IMDb', 'https://www.imdb.com/title/tt8279372/'], ['Instagram', 'https://www.instagram.com/ratchild20q/']] },
+  { idx: 3, numeral: 'III', title: 'Signed', kind: 'Short film · 7 min', year: '2020', short: 'PRODUCER', slotId: 'p3', tag: 'short', prod: 'Arash Visuals Inc., Olomopolo Media', cardProd: 'Arash Visuals Inc.', stills: ['signed-1.png'],
+    role: 'Producer (via Arash Visuals × Olomopolo Media)',
+    body: ['Signed is a short film produced by Arash Visuals in collaboration with Olomopolo Media. It follows Usman, twenty-seven and divorced, who agrees under renewed community pressure to marry Shabana, a distant country cousin.', 'On their wedding night, the marriage of convenience begins to come apart in a heart-to-heart that exposes what social acceptance had been hiding.'],
+    links: [['FilmFreeway', 'https://filmfreeway.com/Signed016']] },
+  { idx: 4, numeral: 'IV', title: 'Convict of 302', kind: 'Documentary', year: '2016', short: 'PRODUCER', slotId: 'p4', tag: 'doc', stills: ['convict-1.png','convict-2.png'],
+    role: 'Producer, Pulitzer Center Reporting Fellow (with Shakeeb Asrar)', recognition: 'SPJ Mark of Excellence Award',
+    body: ["Convict of 302 is a documentary about the human cost of Pakistan's return to the death penalty, made in the aftermath of the 2014 attack on a Peshawar school when the government lifted its long-standing moratorium on executions.", "Produced with Shakeeb Asrar as part of a Pulitzer Center Reporting Fellowship at Northwestern, the film follows an executioner whose livelihood depends on the state's execution count alongside the activists working to reform Pakistan's anti-terrorism laws. It won the SPJ Mark of Excellence for reporting."],
+    links: [['Read / watch', 'https://pulitzercenter.org/stories/convict-302-death-penalty-pakistan']] },
+  { idx: 5, numeral: 'V', title: 'Birdgirl', kind: 'In development', year: '2026', short: 'UPCOMING', slotId: 'p5', tag: 'dev', stills: ['birdgirl-1.png'], upcoming: true,
+    body: ['Details to be announced.'], links: [] },
+  { idx: 6, numeral: 'VI', title: 'Project B', kind: 'In development', year: '2027', short: 'UPCOMING', slotId: 'p6', tag: 'dev', stills: [], upcoming: true,
+    body: ['Details to be announced.'], links: [] },
+];
+
+const PRACTICE = [
+  { name: 'Screenplay development & video editing', tag: 'WRITING · POST' },
+  { name: 'Investigative journalism', tag: 'REPORTING' },
+  { name: 'Branding and creative communications', tag: 'BRAND' },
+  { name: 'Digital marketing', tag: 'SOCIAL · DIGITAL' },
+  { name: 'Website development', tag: 'WEB' },
+  { name: 'Alternative media production', tag: 'ALT MEDIA' },
+  { name: 'Ethnographic and experimental research', tag: 'RESEARCH' },
+  { name: 'Campaign design and narrative construction', tag: 'CAMPAIGNS' },
+];
+const PRACTICE_INTRO = 'Alongside the films, Muse Studios works across a broader practice of story-making and narrative strategy. The studio builds the apparatus around a story, from its first drafts to the way it reaches the people it was made for.';
+
+const MUSE_IS = [
+  'The greatest loss in contemporary cinema is the art of free play and the ability to tell stories that are unhindered by colonial rhetoric.',
+  'We miss cinema that is equal parts entertaining, courageous and humble. We miss cinema that reflected the truth of the world around us, and the true spectrum of the human experience.',
+  'Muse Studios was created to bring to life the Muse within us, that brings wonder to a world forgotten and misrepresented, that brings fears to the surface and traverses into the unseen worlds around us.',
+  'We want to create stories that move people, create change for a better world, and transport us into new dimensions!',
+];
+
+const FOUNDER = {
+  line: 'The best stories are the ones written by people who love hearing them too.',
+  bio: [
+    'Urooj Kamran Azmi is the Founder and CEO of Muse Studios, a production house for Global South stories for impact. Her work spans impact industries, AI, civic technology, human rights, and ecological restoration across the Middle East, North America, South Asia, and Europe.',
+    "A Society of Professional Journalists Mark of Excellence Award winner and a Pulitzer Center Fellow, Urooj has held roles at Al Jazeera English, the Together Coalition, and Tabadlab, where she led work with the UK's FCDO. Over the past decade her campaigns have reached tens of millions of people, with clients and partners including the UK's DCMS, the Royal Foundation, 10 Downing Street, the Pakistan Environment Trust, and the Coalition for Women in Journalism.",
+    'She is a published co-author on behavioural communications, and designed a TikTok-based educational intervention for the FCDO that reached millions in Pakistan. She holds a BSc in Media Industries and Technology from Northwestern University, with a Certificate in Civic Engagement, and an MSc in Marketing from Brunel University.',
+  ],
+  featured: [
+    { src: 'EVCOM', title: 'Clarion Awards 2026', url: 'https://www.evcom.org.uk/news/evcom-clarion-awards-2026-celebrate-outstanding-purpose-driven-communications-and-spark-vital-industry-debate' },
+    { src: 'The Express Tribune', title: 'In conversation with the team behind Blue', url: 'https://tribune.com.pk/story/2268659/in-conversation-with-the-team-behind-blue-a-kaleidoscope' },
+    { src: 'Pulitzer Center', title: 'Student Fellows', url: 'https://pulitzercenter.org/blog/2016-student-fellows-present-day-one-washington-weekend' },
+  ],
+};
+
+const WRITERS_ROOMS = 'The Writers Rooms are an intensive workshop designed and led by Urooj for writers working on stories that other rooms have found too difficult. The rooms bring writers together to work through the drafting and rewriting required to finish scripts that have not yet found industry backing. If you have a script that no one else seems willing to produce, this is the room built for it.';
+
+Object.assign(window, { MUSE_EMAIL, MUSE_MAILTO, MUSE_LINKS, HERO_CYCLE, PROJECTS, PRACTICE, PRACTICE_INTRO, MUSE_IS, FOUNDER, WRITERS_ROOMS });
+
+</script>
+<script type="text/babel">
+/* global React */
+// Detail copy for each service tile (index matches PRACTICE order).
+// Block types: ['h', text] · ['p', text] · ['ul', [items]] ("Lead: rest" bolds the lead) · ['offer', {...}] · ['table', {...}]
+const SERVICE_DETAIL = [
+  [
+    ['h', 'Screenplay development'],
+    ['p', 'The most important thing missing in screenplays coming out of the Global South right now is the craft of strong, multidimensional characters. Dialogue is often too flat, telling the audience what it should be feeling instead of showing it, and the deeper work of motif, image and recurrence tends to get overlooked. We work with writers to strengthen character interiority, sharpen dialogue so that it earns its place, and build the layers of motif that give a screenplay its longer life.'],
+    ['h', 'Video editing'],
+    ['p', 'We edit across a range of formats for different platforms, each cut built to push the narrative forward and keep the audience with us. The work is designed for the way media is actually consumed now, while still honouring the craft of film production.'],
+  ],
+  [
+    ['p', 'We aim to unearth the stories that need to be told, reporting them to the highest journalistic standards and pushing the boundaries of what responsible journalism can do in an era of fake news and manufactured narrative. We celebrate new perspectives and explore ideas that bring important stories to light.'],
+    ['h', 'Services include'],
+    ['ul', ['Investigative research and reporting', 'Networking and source development', 'Production support and fixer services', 'PR and media placements']],
+  ],
+  [
+    ['p', 'One of the greatest gaps in the preservation of culture and in meaningful development work is a lack of investment in cutting-edge branding and innovation in creative communications. Where most agencies play safely within existing brand guidelines, we prefer to work with organisations willing to think outside of them and set a higher standard for the quality of brand development.'],
+    ['p', 'Our branding process begins with a deep dive into art, culture and consumer insights, so that each brand is artfully curated to stand apart from its competitors and reach market gaps that others have missed.'],
+    ['h', 'Creative strategy and direction'],
+    ['ul', ['UI/UX design', 'Marketing plans and communication strategy development', 'Graphic design and illustration', '360 campaign concepting with multi-channel plans, creative kits and moodboards']],
+  ],
+  [
+    ['p', "We offer a full range of digital marketing services, from social media and email marketing through to paid media consultancy. We manage multi-channel execution, making sure each platform is optimised for its own audience, and we run iterative, well-reasoned experimentation to evolve the brand in step with your company's objectives."],
+  ],
+  [
+    ['p', 'We offer end-to-end web development, designing websites that set you apart and provide a dynamic user experience. We align with industry best practices and keep the process timely and smooth. We are experts in SEO optimisation and know how to ensure a site has strong functionality, with reliable backend connectivity, domain support and automation.'],
+    ['offer', {
+      kicker: 'Sweet Deal', title: '£999 Website Refresh',
+      body: 'A limited-time package for small businesses and emerging entrepreneurs. For £999 we will rework your existing website into something sharper and better optimised.*',
+      fine: '*This package covers informational websites only (homepage, about, service pages, contact forms, SEO and query optimisation). It does not cover transactional websites with payment processing, bookings, or e-commerce functionality. For a more advanced build that includes payment integration and sales infrastructure, costs vary — submit a query to',
+    }],
+  ],
+  [
+    ['p', 'Alternative media refers to non-mainstream communication channels, platforms, and content that stand in contrast to dominant, large-scale commercial mass media in their production, distribution, or viewpoint. It tends to share three core characteristics: independence from major corporate ownership, heavy advertising reliance, or direct government control; a focus on marginalised perspectives, stories, political stances and cultural identities that are underrepresented or ignored by traditional outlets; and participatory models of grassroots or citizen journalism, where the audience can also act as a producer rather than a passive consumer.'],
+    ['p', 'We offer alternative media development services to enable civic engagement and provide avenues for participatory democracy to thrive. We want to explore unconventional routes for impact, whether they are led with a social entrepreneurship angle or from a civic action perspective.'],
+  ],
+  [
+    ['p', 'Ethnographic and experimental research combines immersive, qualitative cultural study with active, intervention-based field or lab designs.'],
+    ['h', 'Core concepts'],
+    ['ul', [
+      'Ethnography: prolonged researcher immersion within a social group or setting to understand everyday behaviours, values and cultural contexts from an insider perspective.',
+      'Experimentation: moving beyond passive observation by introducing deliberate field interventions, material arrangements, or boundary objects to provoke responses and study dynamics collaboratively.',
+      'Experimental ethnography: non-traditional, creative output forms such as experimental filmmaking, sensory montage, or audio installations, used to represent cultural complexities rather than relying purely on realist texts.',
+    ]],
+    ['h', 'For corporations, we offer'],
+    ['ul', [
+      'Deep-dive customer immersions: go beyond surveys to see how people actually use your product in their natural environments.',
+      'Behavioural simulation labs: test new product concepts or service designs in real-world environments before an expensive launch.',
+      'Co-creation and future-proofing workshops: engage your actual users as creative partners to design your next product pipeline.',
+    ]],
+    ['h', 'Deliverables you can choose from'],
+    ['ul', [
+      'Video ethnography digests: short, high-impact highlight reels of users interacting with your products (with permission).',
+      'Behavioural friction maps: visual diagrams showing where users struggle and how they bypass design flaws.',
+      'The "What Next" Playbook: a concrete roadmap translating cultural insights into immediate product features or marketing strategies.',
+    ]],
+  ],
+  [
+    ['p', 'Without a structured narrative and design, organisations fail to connect with their audience. The work is crucial because it:'],
+    ['ul', [
+      'Cures message confusion: it takes complex corporate jargon or dense scientific data and translates it into simple, human terms.',
+      'Overcomes audience apathy: people do not change their minds because of statistics, they change their minds because of emotion, and stories build empathy.',
+      'Drives consistent action: whether the goal is buying a product, donating money, or changing a law, a well-designed campaign guides a person step by step from learning about an issue to doing something about it.',
+    ]],
+    ['h', 'Tiers'],
+    ['table', {
+      cols: ['Tier', 'What it includes', 'Best fit for'],
+      rows: [
+        ['1. The Narrative Blueprint (Discovery & Strategy)', 'Audits, stakeholder interviews, core narrative stacks, and audience persona mapping.', 'Corporations undergoing a rebrand or pivot, or NGOs launching multi-year strategies.'],
+        ['2. Campaign Architecture (Design & Launch)', 'Campaign concepting, visual direction, messaging playbooks, and content distribution plans.', 'Social enterprises launching new products, or NGOs heading into fundraising seasons.'],
+        ['3. The Narrative Retainer (Ongoing Optimisation)', 'Ongoing messaging alignment, crisis narrative advisory, and multi-channel content oversight.', 'Enterprise corporations needing persistent oversight for ESG or internal communication.'],
+      ],
+    }],
+  ],
+];
+
+function ServiceDetail({ blocks }) {
+  const h = { fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', margin: '32px 0 12px', opacity: 0.8 };
+  const p = { fontSize: 16, lineHeight: 1.65, margin: '0 0 16px', maxWidth: 760, color: 'inherit', textWrap: 'pretty' };
+  const lead = t => { const i = t.indexOf(': '); return i > 0 && i < 48 ? <><strong style={{ fontWeight: 600 }}>{t.slice(0, i)}:</strong>{t.slice(i + 1)}</> : t; };
+  return (
+    <div>
+      {blocks.map((b, k) => {
+        const [type, v] = b;
+        if (type === 'h') return <div key={k} style={k === 0 ? { ...h, marginTop: 0 } : h}>{v}</div>;
+        if (type === 'p') return <p key={k} style={p}>{v}</p>;
+        if (type === 'ul') return (
+          <ul key={k} style={{ listStyle: 'none', padding: 0, margin: '0 0 16px', maxWidth: 760, display: 'grid', gap: 10 }}>
+            {v.map((t, j) => <li key={j} style={{ ...p, margin: 0, display: 'grid', gridTemplateColumns: '24px 1fr' }}><span style={{ fontFamily: 'var(--font-mono)', opacity: 0.6 }}>—</span><span>{lead(t)}</span></li>)}
+          </ul>
+        );
+        if (type === 'offer') return (
+          <div key={k} style={{ border: '1px solid currentColor', padding: '28px 24px', margin: '24px 0 8px', maxWidth: 760 }}>
+            <div style={{ ...h, margin: '0 0 10px' }}>{v.kicker}</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 36, lineHeight: 1, letterSpacing: '-0.02em', margin: '0 0 14px' }}>{v.title}</div>
+            <p style={p}>{v.body}</p>
+            <p style={{ ...p, fontSize: 13, lineHeight: 1.55, margin: 0, opacity: 0.85 }}>{v.fine} <a href={MUSE_MAILTO} style={{ color: 'inherit' }}>{MUSE_EMAIL}</a>.</p>
+          </div>
+        );
+        if (type === 'table') return (
+          <div key={k} style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 15, lineHeight: 1.5, color: 'inherit' }}>
+              <thead><tr>{v.cols.map(c => <th key={c} style={{ textAlign: 'left', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 500, padding: '0 16px 12px 0', borderBottom: '1px solid currentColor' }}>{c}</th>)}</tr></thead>
+              <tbody>{v.rows.map((r, j) => <tr key={j}>{r.map((c, n) => <td key={n} style={{ verticalAlign: 'top', padding: '16px 16px 16px 0', borderBottom: '1px solid color-mix(in oklab, currentColor 35%, transparent)', fontFamily: n === 0 ? 'var(--font-display)' : 'inherit', fontStyle: n === 0 ? 'italic' : 'normal', fontSize: n === 0 ? 20 : 15, lineHeight: n === 0 ? 1.15 : 1.5, width: n === 0 ? '30%' : 'auto' }}>{c}</td>)}</tr>)}</tbody>
+            </table>
+          </div>
+        );
+        return null;
+      })}
+    </div>
+  );
+}
+
+Object.assign(window, { SERVICE_DETAIL, ServiceDetail });
+
+</script>
+<script type="text/babel">
+/* global React */
+const { useState, useEffect, useRef } = React;
+
+// ---------- TOP NAV ----------
+function TopNav({ route, setRoute }) {
+  const items = ['work', 'services', 'studio', 'contact'];
+  const labels = { work: 'Work', services: 'Our Services', studio: 'Founder', contact: 'Contact' };
+  return (
+    <header className="topbar">
+      <a className="brand-lockup" onClick={() => setRoute('home')}>
+        <span className="brand">Muse</span>
+        <span className="brand-dot"></span>
+        <span className="brand-stack">
+          <span className="brand-tag">STUDIOS</span>
+          <span className="brand-sub">PVT. LTD.</span>
+        </span>
+      </a>
+      <nav>
+        {items.map(id => (
+          <a key={id} className={route === id ? 'active' : ''} onClick={() => setRoute(id)}>
+            {labels[id]}
+          </a>
+        ))}
+        <span className="live-pill">
+          <span className="rec-dot"></span>
+          <span className="meta">RECORDING</span>
+        </span>
+      </nav>
+    </header>
+  );
+}
+
+// ---------- FOOTER ----------
+function Footer({ go, openCase }) {
+  const lk = {};
+  return (
+    <footer className="foot">
+      <div className="foot-grid">
+        <div>
+          <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:48,lineHeight:1,marginBottom:16}}>
+            Muse Studios
+          </div>
+          <div className="eyebrow on-ink" style={{marginBottom:16}}>LONDON · ISLAMABAD</div>
+          <p style={{color:'var(--ink-20)',maxWidth:360,fontSize:14,lineHeight:1.6}}>
+            Stories no one wants to tell. At the edge of reality.
+          </p>
+        </div>
+        <div>
+          <h4>Work</h4>
+          {PROJECTS.slice(0, 4).map(p => <a key={p.idx} style={lk} onClick={() => openCase && openCase(p)}>{p.title}</a>)}
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <a style={lk} onClick={() => go && go('services')}>Screenplay development</a><a style={lk} onClick={() => go && go('services')}>Investigative journalism</a><a style={lk} onClick={() => go && go('services')}>Campaign design</a><a style={lk} onClick={() => go && go('services')}>The Writers Rooms</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href={MUSE_MAILTO}>{MUSE_EMAIL}</a><a href={MUSE_LINKS.imdb} target="_blank" rel="noreferrer">imdb ↗</a><a href={MUSE_LINKS.instagram} target="_blank" rel="noreferrer">instagram ↗</a>
+        </div>
+      </div>
+      <div className="endline">
+        <span>© MUSE STUDIOS · LONDON · ISLAMABAD</span>
+        <span style={{fontFamily:'var(--font-display)',fontStyle:'italic',textTransform:'none',letterSpacing:0,fontSize:15}}>Stories no one wants to tell.</span>
+        <a href={MUSE_MAILTO} style={{color:'inherit'}}>CONTACT ↘</a>
+      </div>
+    </footer>
+  );
+}
+
+// ---------- HERO (letterbox) ----------
+function Hero() {
+  const [tc, setTc] = useState('00:00:14:09');
+  useEffect(() => {
+    const id = setInterval(() => {
+      const t = Date.now() / 1000;
+      const f = Math.floor((t * 24) % 24).toString().padStart(2,'0');
+      const s = Math.floor(t % 60).toString().padStart(2,'0');
+      const m = Math.floor((t/60) % 60).toString().padStart(2,'0');
+      setTc(`00:${m}:${s}:${f}`);
+    }, 80);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <section className="letterbox" style={{padding:0,height:680}}>
+      <div className="letterbox-bar top">
+        <span className="rec-dot"></span>
+        <span className="meta">REEL 03 · MUSE STUDIOS</span>
+        <span style={{flex:1}}></span>
+        <span className="meta">{tc}</span>
+        <span className="meta" style={{color:'var(--ink-40)'}}>· 23.976</span>
+      </div>
+      <div style={{position:'absolute',inset:'32px 0 32px 0',display:'flex'}}>
+        {/* image */}
+        <image-slot id="hero" placeholder="Drop hero film still" style={{flex:1,height:'100%'}}></image-slot>
+        {/* protection scrim */}
+        <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.7) 100%)',pointerEvents:'none'}}></div>
+        {/* corner brackets */}
+        <span style={{position:'absolute',top:24,left:32,width:22,height:22,borderTop:'2px solid var(--cream)',borderLeft:'2px solid var(--cream)'}}></span>
+        <span style={{position:'absolute',top:24,right:32,width:22,height:22,borderTop:'2px solid var(--cream)',borderRight:'2px solid var(--cream)'}}></span>
+        <span style={{position:'absolute',bottom:24,left:32,width:22,height:22,borderBottom:'2px solid var(--cream)',borderLeft:'2px solid var(--cream)'}}></span>
+        <span style={{position:'absolute',bottom:24,right:32,width:22,height:22,borderBottom:'2px solid var(--cream)',borderRight:'2px solid var(--cream)'}}></span>
+        {/* hero copy */}
+        <div style={{position:'absolute',left:64,right:64,bottom:80,zIndex:3,color:'var(--cream)',display:'flex',alignItems:'flex-end',justifyContent:'space-between',gap:64}}>
+          <div>
+            <div className="eyebrow on-ink" style={{marginBottom:24}}>● NOW SHOWING — REEL 03</div>
+            <h1 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:128,lineHeight:0.92,letterSpacing:'-0.03em',margin:0,maxWidth:900}}>
+              We make films<br/>from the places<br/>maps forget.
+            </h1>
+          </div>
+          <div style={{display:'flex',flexDirection:'column',gap:16,alignItems:'flex-end',paddingBottom:8}}>
+            <button className="btn signal"><span className="rec-dot"></span> View showreel</button>
+            <button className="btn cream">Start a brief →</button>
+          </div>
+        </div>
+      </div>
+      <div className="letterbox-bar bottom">
+        <span className="meta">DIR / Aanya Mehta · DOP / Kunle Adigun</span>
+        <span style={{flex:1}}></span>
+        <span className="meta">LAGOS · MUMBAI · MANILA · SÃO PAULO · NAIROBI · DHAKA</span>
+      </div>
+    </section>
+  );
+}
+
+// ---------- PROJECT CARD ----------
+function ProjectCard({ idx, title, kind, year, country, slotId, dark, grad, stills }) {
+  const border = dark ? 'var(--ink-60)' : 'var(--ink)';
+  return (
+    <a className="frame-card" style={{padding:0,display:'block',color: dark ? 'var(--cream)' : 'var(--ink)',background: dark ? 'var(--ink-90)' : 'transparent',borderColor:border}}>
+      <div style={{position:'relative'}}>
+        {stills && stills.length ? <image-slot id={slotId} src={stills[0]} placeholder={`Drop still — ${title}`} style={{display:'block',width:'100%',height:280}}></image-slot> : <div style={{width:'100%',height:280,background:'linear-gradient(135deg, #5B6FE0 0%, #7A1E1E 55%, #0E0D0B 100%)'}}></div>}
+        {/* gradient film-grade tint, sits under a dropped image's transparent edges and colors the empty state */}
+        {grad && <div style={{position:'absolute',inset:0,background:grad,mixBlendMode:'multiply',opacity:0.25,pointerEvents:'none'}}></div>}
+        {/* colored exposure bar across the seam */}
+        <div style={{position:'absolute',left:0,right:0,bottom:0,height:4,background:grad || 'var(--signal)'}}></div>
+      </div>
+      <div style={{padding:'16px 18px',borderTop:`1px solid ${border}`,display:'flex',justifyContent:'space-between',alignItems:'flex-start',gap:16}}>
+        <div>
+          <div className="eyebrow" style={{marginBottom:8,color: dark ? 'var(--ink-20)' : 'var(--fg-3)'}}>{`0${idx} · ${kind.toUpperCase()}`}</div>
+          <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:32,lineHeight:1.05,letterSpacing:'-0.02em'}}>{title}</div>
+        </div>
+        <div style={{textAlign:'right',flexShrink:0}}>
+          <div className="meta" style={{fontSize:11,color: dark ? 'var(--cream)' : 'var(--fg-1)'}}>{year}</div>
+          <div className="meta" style={{fontSize:11,color: dark ? 'var(--ink-40)' : 'var(--fg-3)'}}>{country}</div>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+// ---------- SERVICE BLOCK ----------
+function ServiceBlock({ idx, name, desc, tag, surface, epigraph, open, onToggle }) {
+  const styles = {
+    cream: { background: 'var(--cream)', color: 'var(--ink)', border: '1px solid var(--ink)' },
+    ink:   { background: 'var(--ink)',   color: 'var(--cream)' },
+    oxblood: { background: 'var(--oxblood)', color: 'var(--cream)' },
+    ochre: { background: 'var(--ochre)', color: 'var(--ink)' },
+    twilight: { background: 'var(--twilight)', color: 'var(--cream)' },
+    jade: { background: 'var(--jade)', color: 'var(--ink)' },
+    iris: { background: 'var(--iris)', color: 'var(--cream)' },
+  }[surface];
+  const eyebrowColor = (surface === 'cream' || surface === 'ochre' || surface === 'jade') ? 'var(--fg-3)' : 'var(--ink-20)';
+  return (
+    <div role="button" tabIndex={0} aria-expanded={!!open} onClick={onToggle} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle && onToggle(); } }} style={{...styles,padding:'40px 32px',display:'flex',flexDirection:'column',gap:16,minHeight:340,position:'relative',cursor:'pointer',outline: open ? '3px solid var(--signal)' : 'none',outlineOffset: open ? -3 : 0}}>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline',gap:12}}>
+        <span className="eyebrow" style={{color:eyebrowColor,letterSpacing:'0.16em',fontFamily:'var(--font-mono)',fontSize:11,textTransform:'uppercase'}}>{`SVC / 0${idx}`}</span>
+        <span className="eyebrow" style={{color:eyebrowColor,letterSpacing:'0.16em',fontFamily:'var(--font-mono)',fontSize:11,textTransform:'uppercase'}}>{tag}</span>
+      </div>
+      {epigraph && <blockquote className="svc-epi" style={{marginTop:8}}>“{epigraph.q}”<cite style={{color:eyebrowColor}}>— {epigraph.film}, {epigraph.year}</cite></blockquote>}
+      <h3 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:52,lineHeight:0.98,letterSpacing:'-0.02em',margin:'auto 0 0'}}>{name}</h3>
+      {desc && <p style={{margin:0,fontSize:15,lineHeight:1.55,maxWidth:380,opacity:0.92}}>{desc}</p>}
+      <div style={{display:'flex',alignItems:'center',gap:8,marginTop:4}}>
+        <span style={{fontFamily:'var(--font-mono)',fontSize:12,letterSpacing:'0.12em',textTransform:'uppercase',fontWeight:500}}>{open ? 'Close' : 'Read more'}</span>
+        <span style={{fontFamily:'var(--font-mono)',fontSize:16}}>{open ? '−' : '+'}</span>
+      </div>
+    </div>
+  );
+}
+
+// ---------- MARQUEE ----------
+function Marquee({ items, dir = 'l', dark }) {
+  const content = items.concat(items).join('   ※   ');
+  return (
+    <div style={{overflow:'hidden',whiteSpace:'nowrap',borderTop:`1px solid ${dark ? 'var(--ink-60)' : 'var(--ink)'}`,borderBottom:`1px solid ${dark ? 'var(--ink-60)' : 'var(--ink)'}`,padding:'18px 0',background: dark ? 'var(--ink)' : 'transparent',color: dark ? 'var(--cream)' : 'var(--ink)'}}>
+      <div style={{display:'inline-block',animation:`marq-${dir} 32s linear infinite`,fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:52,letterSpacing:'-0.02em'}}>
+        {content}   ※   {content}
+      </div>
+      <style>{`
+        @keyframes marq-l { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes marq-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+      `}</style>
+    </div>
+  );
+}
+
+// ---------- SECTION HEADER ----------
+function SectionHeader({ index, kicker, title, action, dark }) {
+  return (
+    <div style={{marginBottom:32,paddingBottom:24,borderBottom:`1px solid ${dark ? 'var(--ink-60)' : 'var(--ink)'}`}}>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',gap:32}}>
+        <div style={{minWidth:0}}>
+          <div className="eyebrow" style={{marginBottom:12,color: dark ? 'var(--ink-20)' : 'var(--fg-3)'}}>{`§ ${index} · ${kicker}`}</div>
+          <h2 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:64,lineHeight:1.0,letterSpacing:'-0.025em',margin:0,maxWidth:900,color: dark ? 'var(--cream)' : 'var(--ink)'}}>{title}</h2>
+        </div>
+        {action && <button className={`btn ${dark ? 'cream' : ''}`} style={{flexShrink:0}}>{action} →</button>}
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { TopNav, Footer, Hero, ProjectCard, ServiceBlock, Marquee, SectionHeader });
+
+</script>
+<script type="text/babel">
+/* global React, TopNav, Footer, Hero, ProjectCard, ServiceBlock, Marquee, SectionHeader, QUOTES, Subtitle, CreditsCrawl, ScriptExcerpt */
+const { useState } = React;
+
+// ---------- HOME (edit-suite styled) ----------
+function HomeScreen({ setRoute, openCase }) {
+  const [tc, setTc] = React.useState('00:00:00:00');
+  const [pos, setPos] = React.useState(0.02);
+  const [playing, setPlaying] = React.useState(true);
+  const heroVidRef = React.useRef();
+  const dragging = React.useRef(false);
+  const scrubRef = React.useRef();
+  React.useEffect(() => {
+    if (!playing) return;
+    let raf, last = performance.now();
+    const step = (now) => {
+      const dt = now - last; last = now;
+      if (!dragging.current) setPos(p => (p + dt / 84000) % 1);
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [playing]);
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      const t = Date.now() / 1000;
+      const f = Math.floor((t * 24) % 24).toString().padStart(2,'0');
+      const s = Math.floor(t % 60).toString().padStart(2,'0');
+      const m = Math.floor((t/60) % 60).toString().padStart(2,'0');
+      setTc(`00:${m}:${s}:${f}`);
+    }, 80);
+    return () => clearInterval(id);
+  }, []);
+  const onScrub = (e) => {
+    const move = (ev) => {
+      const r = scrubRef.current.getBoundingClientRect();
+      setPos(Math.max(0, Math.min(1, (ev.clientX - r.left - 12) / (r.width - 24))));
+    };
+    const up = () => { dragging.current = false; window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+    dragging.current = true;
+    window.addEventListener('mousemove', move); window.addEventListener('mouseup', up);
+    move(e);
+  };
+
+  const grads = ['linear-gradient(135deg, #7A1E1E 0%, #1B2A4E 70%, #0E0D0B 100%)','linear-gradient(135deg, #5B6FE0 0%, #1B2A4E 65%, #0E0D0B 100%)','linear-gradient(135deg, #3FA37A 0%, #1B2A4E 70%, #0E0D0B 100%)','linear-gradient(135deg, #D9A441 0%, #7A1E1E 70%, #0E0D0B 100%)'];
+  const reels = PROJECTS.slice(0, 4).map((p, i) => ({ ...p, grad: grads[i] }));
+  const [cyc, setCyc] = React.useState(0);
+  React.useEffect(() => { const id = setInterval(() => setCyc(n => (n + 1) % HERO_CYCLE.length), 2800); return () => clearInterval(id); }, []);
+  const services = PRACTICE.map((p, i) => ({ ...p, c: ['var(--cream)','var(--iris-soft)','var(--ochre)','var(--jade-soft)'][i % 4] }));
+  const clips = [
+    { w: 14, c: 'var(--oxblood)' }, { w: 8, c: 'var(--twilight)' }, { w: 20, c: 'var(--oxblood)' },
+    { w: 12, c: 'var(--ochre)' }, { w: 18, c: 'var(--jade)' }, { w: 10, c: 'var(--iris)' }, { w: 18, c: 'var(--oxblood-deep)' },
+  ];
+  let acc = 0, cueIdx = 0;
+  clips.forEach((c, i) => { if (pos * 100 >= acc) cueIdx = i; acc += c.w; });
+  const cueStart = (i) => clips.slice(0, i).reduce((a, c) => a + c.w, 0) / 100 + 0.002;
+  const tcAt = (p) => {
+    const total = Math.floor(p * 24 * 60);
+    const m = Math.floor(total / 60).toString().padStart(2,'0');
+    const s = (total % 60).toString().padStart(2,'0');
+    return `00:${m}:${s}:00`;
+  };
+  const textLink = { fontFamily:'var(--font-mono)', fontSize:12, letterSpacing:'0.12em', textTransform:'uppercase', color:'var(--cream)', cursor:'pointer', display:'inline-flex', alignItems:'center', gap:8, borderBottom:'1px solid transparent', paddingBottom:2, transition:'border-color 180ms var(--ease-mech)', whiteSpace:'nowrap' };
+
+  return (
+    <div className="es-home">
+      {/* CONTROL STRIP — the one piece of tool chrome, kept */}
+      <div className="es-strip">
+        <span className="es-crumb"><b>MUSE</b><span className="sep">/</span>STUDIOS</span>
+        <span style={{flex:1}}></span>
+        <span className="es-tc">TC {tc}</span>
+        <span className="es-eyebrow" style={{color:'var(--ink-20)'}}>24 FPS</span>
+      </div>
+
+      {/* PROGRAM MONITOR HERO — minimal: headline + one quiet link */}
+      <section style={{padding:'32px 32px 0'}}>
+        <div className="es-monitor" style={{height:600}}>
+          <image-slot id="hero" src="rat-child-1.png" placeholder="Drop hero film still" style={{display:'block',position:'absolute',inset:0,width:'100%',height:'100%'}}></image-slot>
+          <div style={{position:'absolute',inset:0,overflow:'hidden',pointerEvents:'none',zIndex:1}}>
+            <iframe ref={heroVidRef} title="Muse Studios reel" src="https://www.youtube-nocookie.com/embed/rBdcJ9QO_KE?autoplay=1&mute=1&loop=1&playlist=rBdcJ9QO_KE&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&enablejsapi=1" frameBorder="0" allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" tabIndex={-1} style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',pointerEvents:'none',objectFit:'cover',border:0}}></iframe>
+          </div>
+          <div aria-hidden="true" style={{position:'absolute',inset:0,background:'rgba(0,0,0,0.5)',pointerEvents:'none',zIndex:2}}></div>
+          <div className="scan"></div>
+          <div style={{position:'absolute',top:0,left:0,right:0,display:'flex',alignItems:'center',gap:14,padding:'18px 22px',zIndex:5}}>
+            <span className="rec-dot"></span>
+            <span className="es-eyebrow" style={{color:'var(--cream)'}}>NOW SHOWING · EXT. · NIGHT</span>
+            <span style={{flex:1}}></span>
+            <span className="es-tc">{tc}</span>
+          </div>
+          <span className="es-bracket tl"></span>
+          <span className="es-bracket br"></span>
+          <div style={{position:'absolute',left:0,right:0,bottom:0,padding:'0 44px 120px',zIndex:5}}>
+            <h1 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:84,lineHeight:0.96,letterSpacing:'-0.03em',margin:'0 0 18px',color:'var(--cream)',maxWidth:780}}>
+              stories<br/>no one wants<br/>to tell.
+            </h1>
+            <div key={cyc} className="sub-burn swap" style={{position:'static',transform:'none',textAlign:'left',width:'auto',maxWidth:780,margin:'0 0 28px'}}>
+              <span className="line" style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:28,background:'none',padding:0,color:'var(--cream)'}}>{HERO_CYCLE[cyc]}</span>
+            </div>
+            <div style={{display:'flex',gap:32}}>
+              <span style={textLink} onClick={() => { const nx = !playing; setPlaying(nx); heroVidRef.current && heroVidRef.current.contentWindow.postMessage(JSON.stringify({event:'command',func: nx ? 'playVideo' : 'pauseVideo',args:[]}), '*'); }} onMouseEnter={e=>e.currentTarget.style.borderColor='var(--signal)'} onMouseLeave={e=>e.currentTarget.style.borderColor='transparent'}><span className="rec-dot" style={{opacity: playing ? 1 : 0.3}}></span> {playing ? 'Pause reel' : 'Play showreel'}</span>
+              <span style={textLink} onClick={() => window.scrollTo({top: window.innerHeight * 0.85, behavior: 'smooth'})} onMouseEnter={e=>e.currentTarget.style.borderColor='var(--cream)'} onMouseLeave={e=>e.currentTarget.style.borderColor='transparent'}>Begin ↓</span>
+              <span style={textLink} onClick={() => setRoute('contact')} onMouseEnter={e=>e.currentTarget.style.borderColor='var(--cream)'} onMouseLeave={e=>e.currentTarget.style.borderColor='transparent'}>Contact ↘</span>
+            </div>
+          </div>
+        </div>
+
+        {/* SCRUBBER — the signature interaction, kept */}
+        <div style={{marginTop:14}}>
+          <div className="es-scrubber" ref={scrubRef} onMouseDown={onScrub}>
+            <div className="ticks">{Array.from({length:25}).map((_,i)=><span key={i}/>)}</div>
+            <div className="clips">{clips.map((c,i)=><div key={i} className="clip" style={{width:c.w+'%',background:c.c}}/>)}</div>
+            <div className="head" style={{left:`calc(12px + (100% - 24px) * ${pos} - 1px)`}}></div>
+          </div>
+          <div className="sub-track" style={{padding:'0 12px'}}>
+            {clips.map((c,i)=>(
+              <div key={i} className={`cue ${i===cueIdx?'on':''}`} style={{width:c.w+'%'}} onClick={() => setPos(cueStart(i))}>{`CLIP ${String(i+1).padStart(2,'0')}`}</div>
+            ))}
+          </div>
+          <div style={{display:'flex',justifyContent:'space-between',marginTop:8}}>
+            <span className="es-eyebrow" style={{fontFeatureSettings:"'tnum' 1"}}>00:00:00:00</span>
+            <span style={{fontFamily:'var(--font-mono)',fontSize:12,color:'var(--signal)',fontWeight:500,fontFeatureSettings:"'tnum' 1"}}>{tcAt(pos)}</span>
+            <span className="es-eyebrow" style={{fontFeatureSettings:"'tnum' 1"}}>00:24:00:00</span>
+          </div>
+        </div>
+      </section>
+
+      {/* § I — WHAT MUSE IS — single monitor, copy below */}
+      <section style={{padding:'88px 32px 0'}}>
+        <div className="es-monitor" style={{height:420,marginBottom:36}}>
+          <image-slot id="bts-blue" src="blue-3.png" placeholder="Drop behind-the-scenes shot" style={{display:'block',position:'absolute',inset:0,width:'100%',height:'100%'}}></image-slot>
+          <div className="grad" style={{background:'linear-gradient(135deg, #1B2A4E 0%, #7A1E1E 60%, #0E0D0B 100%)',mixBlendMode:'multiply',opacity:0.25}}></div>
+          <div className="scan"></div>
+          <span className="es-bracket tl"></span>
+          <span className="es-bracket br"></span>
+          <div style={{position:'absolute',top:16,left:16,display:'flex',alignItems:'center',gap:8,zIndex:4}}>
+            <span className="rec-dot"></span>
+            <span className="es-eyebrow" style={{color:'var(--cream)'}}>§ I · WHAT MUSE IS</span>
+          </div>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'1.4fr 1fr',gap:48,alignItems:'start'}}>
+          <h2 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:44,lineHeight:1.05,letterSpacing:'-0.025em',margin:0,color:'var(--cream)',textWrap:'pretty'}}>
+            {MUSE_IS[0]}
+          </h2>
+          <div>
+            {MUSE_IS.slice(1).map((t, i) => <p key={i} style={{fontSize:15,lineHeight:1.7,color:'var(--ink-10)',margin:'0 0 20px'}}>{t}</p>)}
+            <span className="es-eyebrow" style={{color:'var(--ink-20)'}}>the studio.</span>
+          </div>
+        </div>
+      </section>
+
+      {/* SELECTED REELS — clean gradient thumbnails, quiet captions */}
+      <section style={{padding:'88px 32px 32px'}}>
+        <div style={{display:'flex',alignItems:'baseline',justifyContent:'space-between',marginBottom:36}}>
+          <span className="es-eyebrow">§ II · Pictures that linger.</span>
+          <span style={{...textLink, color:'var(--ink-20)', fontWeight:600}} onClick={() => setRoute('work')} onMouseEnter={e=>e.currentTarget.style.borderColor='var(--ink-20)'} onMouseLeave={e=>e.currentTarget.style.borderColor='transparent'}>All work →</span>
+        </div>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:32}}>
+          {reels.map(r => (
+            <div key={r.idx} onClick={() => openCase(r)} style={{cursor:'pointer'}}>
+              <div className="es-monitor" style={{height:300}} onMouseEnter={e=>e.currentTarget.querySelector('.cap').style.opacity=1} onMouseLeave={e=>e.currentTarget.querySelector('.cap').style.opacity=0}>
+                {r.stills.length ? <image-slot id={r.slotId} src={r.stills[0]} placeholder={`Drop still — ${r.title}`} style={{display:'block',width:'100%',height:'100%'}}></image-slot> : <div style={{width:'100%',height:'100%',background:'linear-gradient(135deg, #5B6FE0 0%, #7A1E1E 55%, #0E0D0B 100%)'}}></div>}
+                <div className="grad" style={{background:r.grad,mixBlendMode:'multiply',opacity:0.25}}></div>
+                <div className="scan"></div>
+                <div className="cap" style={{position:'absolute',top:16,left:16,opacity:0,transition:'opacity 180ms var(--ease-mech)',zIndex:3}}>
+                  <span className="es-eyebrow" style={{color:'var(--cream)'}}>{`REEL ${r.numeral}`}</span>
+                </div>
+              </div>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline',gap:16,marginTop:16}}>
+                <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:30,lineHeight:1.05,letterSpacing:'-0.02em',color:'var(--cream)'}}>{r.title}{r.prod && <div className="es-eyebrow" style={{fontFamily:'var(--font-mono)',fontStyle:'normal',marginTop:8,color:'var(--ink-20)'}}>{`Produced by ${r.cardProd || r.prod}`}</div>}</div>
+                <div className="es-eyebrow" style={{flexShrink:0}}>{r.kind} · {r.year}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Marquee items={['stories no one wants to tell','at the edge of reality']} dark />
+
+      {/* § III OUR SERVICES — quiet list, no boxes */}
+      <section style={{padding:'88px 32px'}}>
+        <span className="es-eyebrow" style={{display:'block',marginBottom:20}}>§ III · Beyond the films.</span>
+        <button className="btn cream" onClick={() => setRoute('services')} style={{marginBottom:36,whiteSpace:'nowrap'}}>Explore our services →</button>
+        <div>
+          {services.map((s, i) => (
+            <div key={s.name} role="link" tabIndex={0} onClick={() => { window.__svcOpen = i; setRoute('services'); }} onKeyDown={e => { if (e.key === 'Enter') { window.__svcOpen = i; setRoute('services'); } }} onMouseEnter={e => e.currentTarget.style.paddingLeft = '12px'} onMouseLeave={e => e.currentTarget.style.paddingLeft = '0'} style={{display:'flex',alignItems:'baseline',gap:24,padding:'22px 0',borderTop:'1px solid var(--ink-80)',cursor:'pointer',transition:'padding-left 240ms var(--ease-mech)'}}>
+              <span className="es-eyebrow" style={{width:36,flexShrink:0}}>{String(i+1).padStart(2,'0')}</span>
+              <span style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:40,lineHeight:1,letterSpacing:'-0.02em',color:'var(--cream)',flex:1}}>{s.name}</span>
+              <span className="es-eyebrow" style={{color:s.c}}>{s.tag}</span>
+            </div>
+          ))}
+          <div style={{borderTop:'1px solid var(--ink-80)'}}></div>
+        </div>
+        <div style={{marginTop:28}}>
+          <span style={{...textLink, color:'var(--ink-20)'}} onClick={() => setRoute('studio')} onMouseEnter={e=>e.currentTarget.style.borderColor='var(--ink-20)'} onMouseLeave={e=>e.currentTarget.style.borderColor='transparent'}>Meet the founder →</span>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// ---------- WORK INDEX ----------
+function WorkScreen({ openCase }) {
+  const [filter, setFilter] = useState('all');
+  const grads = ['linear-gradient(135deg, #7A1E1E 0%, #1B2A4E 70%, #0E0D0B 100%)','linear-gradient(135deg, #5B6FE0 0%, #1B2A4E 65%, #0E0D0B 100%)','linear-gradient(135deg, #3FA37A 0%, #1B2A4E 70%, #0E0D0B 100%)','linear-gradient(135deg, #D9A441 0%, #7A1E1E 70%, #0E0D0B 100%)','linear-gradient(135deg, #1B2A4E 0%, #0E0D0B 100%)','linear-gradient(135deg, #3A3530 0%, #0E0D0B 100%)'];
+  const all = PROJECTS.map((p, i) => ({ ...p, slotId: 'w' + p.idx, country: p.short, grad: grads[i] }));
+  const filters = [
+    { id: 'all', label: 'All work' }, { id: 'short', label: 'Short film' },
+    { id: 'doc', label: 'Documentary' }, { id: 'dev', label: 'In development' },
+  ];
+  const list = filter === 'all' ? all : all.filter(p => p.tag === filter);
+  return (
+    <section className="container" style={{paddingTop:64,paddingBottom:96}}>
+      <div className="eyebrow" style={{marginBottom:24}}>§ II · SELECTED WORK · {String(list.length).padStart(2,'0')} FILMS</div>
+      <h1 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:128,lineHeight:0.92,letterSpacing:'-0.03em',margin:'0 0 48px'}}>The archive, so far.</h1>
+      <div style={{display:'flex',gap:8,paddingBottom:24,borderBottom:'1px solid var(--ink)',marginBottom:48,flexWrap:'wrap'}}>
+        {filters.map(f => (
+          <button key={f.id} onClick={() => setFilter(f.id)} className={`btn ${filter===f.id?'primary':''}`} style={{padding:'8px 14px',fontSize:13}}>
+            {f.label}
+          </button>
+        ))}
+        <span style={{flex:1}}></span>
+        <a className="meta" href={MUSE_LINKS.imdb} target="_blank" rel="noreferrer" style={{alignSelf:'center',color:'inherit'}}>FULL FILMOGRAPHY ON IMDB ↗</a>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:32}}>
+        {list.map(p => (
+          <div key={p.idx} onClick={() => openCase(p)} style={{cursor:'pointer'}}>
+            <ProjectCard {...p} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------- STILLS CAROUSEL ----------
+function StillsCarousel({ stills, title }) {
+  const [i, setI] = useState(0);
+  const n = stills.length;
+  const go = d => setI(x => (x + d + n) % n);
+  React.useEffect(() => {
+    const k = e => { if (e.key === 'ArrowLeft') go(-1); if (e.key === 'ArrowRight') go(1); };
+    window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k);
+  }, [n]);
+  const arrow = {position:'absolute',top:'50%',transform:'translateY(-50%)',width:48,height:48,border:'1px solid var(--cream)',background:'rgba(14,13,11,0.55)',color:'var(--cream)',fontFamily:'var(--font-mono)',fontSize:18,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',zIndex:3};
+  return (
+    <div>
+      <div className="eyebrow" style={{marginBottom:18,display:'flex',justifyContent:'space-between',gap:24}}>
+        <span style={{whiteSpace:'nowrap',flexShrink:0}}>{`§ STILLS · ${String(i+1).padStart(2,'0')} / ${String(n).padStart(2,'0')}`}</span>
+        {n > 1 && <span style={{whiteSpace:'nowrap'}}>← → TO ADVANCE</span>}
+      </div>
+      <div style={{position:'relative',aspectRatio:'16 / 9',background:'var(--ink)',border:'1px solid var(--ink)',overflow:'hidden'}}>
+        <div style={{display:'flex',height:'100%',transform:`translateX(-${i*100}%)`,transition:'transform 600ms var(--ease-mech)'}}>
+          {stills.map((src, k) => <img key={src} src={src} alt={`${title} — still ${k+1}`} style={{flex:'0 0 100%',width:'100%',height:'100%',objectFit:'cover',display:'block'}} />)}
+        </div>
+        {n > 1 && <button aria-label="Previous still" onClick={() => go(-1)} style={{...arrow,left:16}}>←</button>}
+        {n > 1 && <button aria-label="Next still" onClick={() => go(1)} style={{...arrow,right:16}}>→</button>}
+      </div>
+      {n > 1 && <div style={{display:'flex',gap:12,marginTop:12}}>
+        {stills.map((src, k) => (
+          <button key={src} onClick={() => setI(k)} aria-label={`Still ${k+1}`} style={{padding:0,width:120,aspectRatio:'16 / 9',border:k===i?'2px solid var(--signal)':'1px solid var(--ink)',opacity:k===i?1:0.55,cursor:'pointer',background:'none',overflow:'hidden'}}>
+            <img src={src} alt="" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
+          </button>
+        ))}
+      </div>}
+    </div>
+  );
+}
+
+// ---------- CASE STUDY ----------
+function CaseScreen({ project, setRoute }) {
+  const p = (project && PROJECTS.find(x => x.idx === project.idx)) || PROJECTS[0];
+  const next = PROJECTS[p.idx % PROJECTS.length];
+  const credits = [['ROLE', p.upcoming ? 'TBA' : p.role], ['PROD', p.prod || 'Muse Studios']].concat(p.recognition ? [['HONOURS', p.recognition]] : []);
+  const spec = [['FORMAT', p.kind], ['YEAR', p.year], ['STATUS', p.upcoming ? 'In development' : 'Released']];
+  const dl = {display:'grid',gridTemplateColumns:'1fr 2fr',rowGap:10,fontFamily:'var(--font-mono)',fontSize:12,letterSpacing:'0.04em',margin:0};
+  return (
+    <>
+      <section style={{background:'var(--ink)',padding:0}}>
+        <div style={{position:'relative',height:680}}>
+          <div className="letterbox-bar top">
+            <span className="rec-dot"></span>
+            <span className="meta">REEL {p.numeral} · {p.title.toUpperCase()}</span>
+            <span style={{flex:1}}></span>
+            <span className="meta">SCENE 01 · TAKE 14</span>
+          </div>
+          {p.stills.length ? <image-slot id={`case-hero-p${p.idx}`} src={p.stills[0]} placeholder={`Drop hero still — ${p.title}`} style={{display:'block',position:'absolute',inset:'32px 0',width:'100%',height:'calc(100% - 64px)'}}></image-slot> : <div style={{position:'absolute',inset:'32px 0',background:'linear-gradient(135deg, #5B6FE0 0%, #7A1E1E 55%, #0E0D0B 100%)'}}></div>}
+          <div className="letterbox-bar bottom">
+            <span className="meta">{p.kind} · {p.year}</span>
+          </div>
+        </div>
+      </section>
+      <section className="container" style={{paddingTop:80,paddingBottom:64,display:'grid',gridTemplateColumns:'2fr 1fr',gap:96}}>
+        <div>
+          <div className="eyebrow" style={{marginBottom:24}}>§ {p.numeral} · {p.upcoming ? 'UPCOMING' : 'LOGLINE'}</div>
+          <h1 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:96,lineHeight:0.95,letterSpacing:'-0.03em',margin:'0 0 48px'}}>{p.title}</h1>
+          {p.body.map((t, i) => i === 0
+            ? <p key={i} style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:32,lineHeight:1.25,maxWidth:680,margin:'0 0 48px',color:'var(--fg-2)'}}>{t}</p>
+            : <p key={i} style={{fontSize:17,lineHeight:1.65,maxWidth:680,marginBottom:24}}>{t}</p>)}
+        </div>
+        <aside style={{borderLeft:'1px solid var(--ink)',paddingLeft:32}}>
+          <div className="eyebrow" style={{marginBottom:18}}>CREDITS</div>
+          <dl style={dl}>
+            {credits.map(([k,v]) => (
+              <React.Fragment key={k}>
+                <dt style={{color:'var(--fg-3)'}}>{k}</dt>
+                <dd style={{margin:0,color:'var(--ink)'}}>{v}</dd>
+              </React.Fragment>
+            ))}
+          </dl>
+          <div className="eyebrow" style={{marginTop:32,marginBottom:18}}>SPEC</div>
+          <dl style={dl}>
+            {spec.map(([k,v]) => (
+              <React.Fragment key={k}>
+                <dt style={{color:'var(--fg-3)'}}>{k}</dt>
+                <dd style={{margin:0,color:'var(--ink)'}}>{v}</dd>
+              </React.Fragment>
+            ))}
+          </dl>
+          {p.links.map(([label, url], i) => (
+            <a key={url} href={url} target="_blank" rel="noreferrer" className={`btn ${i===0?'signal':''}`} style={{marginTop: i===0 ? 32 : 12,width:'100%',justifyContent:'center'}}>{i===0 && <span className="rec-dot"></span>}<span style={{whiteSpace:'nowrap'}}>{`${label} ↗`}</span></a>
+          ))}
+        </aside>
+      </section>
+      {p.stills.length > 0 && <section className="container" style={{paddingBottom:96}}>
+        <StillsCarousel key={p.idx} stills={p.stills} title={p.title} />
+      </section>}
+      <section style={{background:'var(--oxblood)',color:'var(--cream)',padding:'80px 0'}}>
+        <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:48}}>
+          <h2 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:64,lineHeight:1,letterSpacing:'-0.025em',margin:0}}>Next reel →</h2>
+          <button className="btn cream" onClick={() => setRoute('work')}>{next.title} →</button>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// ---------- OUR SERVICES ----------
+function ServicesScreen() {
+  const surfaces = ['ink','iris','ochre','jade','cream','oxblood','twilight','cream'];
+  const surfaceStyle = { cream: { background:'var(--cream)', color:'var(--ink)', border:'1px solid var(--ink)' }, ink: { background:'var(--ink)', color:'var(--cream)' }, oxblood: { background:'var(--oxblood)', color:'var(--cream)' }, ochre: { background:'var(--ochre)', color:'var(--ink)' }, twilight: { background:'var(--twilight)', color:'var(--cream)' }, jade: { background:'var(--jade)', color:'var(--ink)' }, iris: { background:'var(--iris)', color:'var(--cream)' } };
+  const [open, setOpen] = useState(() => { const v = window.__svcOpen; window.__svcOpen = null; return v == null ? null : v; });
+  const panelRef = React.useRef();
+  const toggle = i => setOpen(o => o === i ? null : i);
+  React.useEffect(() => {
+    if (open == null || !panelRef.current) return;
+    const t = setTimeout(() => { const r = panelRef.current.getBoundingClientRect(); if (r.top > window.innerHeight * 0.7 || r.top < 0) window.scrollTo({ top: window.scrollY + r.top - 140, behavior: 'smooth' }); }, 60);
+    return () => clearTimeout(t);
+  }, [open]);
+  const darkText = s => s === 'cream' || s === 'ochre' || s === 'jade';
+  const panel = i => {
+    const sv = PRACTICE[i], sf = surfaces[i];
+    return (
+      <div key={'panel-' + i} ref={panelRef} style={{...surfaceStyle[sf], gridColumn:'1 / -1', padding:'48px 32px 40px', marginTop:-12}}>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline',gap:24,marginBottom:32}}>
+          <span style={{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'0.16em',textTransform:'uppercase',opacity:0.8,whiteSpace:'nowrap'}}>{`SVC / 0${i+1} · ${sv.tag}`}</span>
+          <button onClick={() => setOpen(null)} style={{background:'none',border:'1px solid currentColor',color:'inherit',fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'0.14em',textTransform:'uppercase',padding:'8px 12px',cursor:'pointer',whiteSpace:'nowrap'}}>Close −</button>
+        </div>
+        <ServiceDetail blocks={SERVICE_DETAIL[i]} />
+        <a className={`btn ${darkText(sf) ? 'primary' : 'cream'}`} href={MUSE_MAILTO} style={{marginTop:24,whiteSpace:'nowrap'}}>{`Get in touch → ${MUSE_EMAIL}`}</a>
+      </div>
+    );
+  };
+  return (
+    <section className="container" style={{paddingTop:64,paddingBottom:96}}>
+      <div className="eyebrow" style={{marginBottom:24}}>§ III · OUR SERVICES · 08 / 08</div>
+      <h1 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:128,lineHeight:0.92,letterSpacing:'-0.03em',margin:'0 0 32px',maxWidth:1100}}>
+        Beyond the films.
+      </h1>
+      <p style={{fontSize:18,lineHeight:1.6,maxWidth:720,margin:'0 0 64px'}}>{PRACTICE_INTRO}</p>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(2, 1fr)',gap:24}}>
+        {PRACTICE.flatMap((sv, i) => {
+          const tile = <ServiceBlock key={sv.name} idx={i+1} name={sv.name} tag={sv.tag} surface={surfaces[i]} open={open === i} onToggle={() => toggle(i)} />;
+          const rowEnd = i % 2 === 1 || i === PRACTICE.length - 1;
+          const showPanel = open != null && rowEnd && Math.floor(open / 2) === Math.floor(i / 2);
+          return showPanel ? [tile, panel(open)] : [tile];
+        })}
+        <div className="frame-card" style={{gridColumn:'1 / -1',color:'var(--ink)',padding:'48px 32px',display:'flex',flexDirection:'column',gap:18,minHeight:340,justifyContent:'space-between'}}>
+          <div className="eyebrow">§ V · PROGRAMME · AN OPEN CALL</div>
+          <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:42,lineHeight:1,letterSpacing:'-0.02em'}}>The Writers Rooms</div>
+          <p style={{margin:0,fontSize:16,lineHeight:1.6,maxWidth:760}}>{WRITERS_ROOMS}</p>
+          <a className="btn primary" href={MUSE_MAILTO} style={{alignSelf:'flex-start',whiteSpace:'nowrap'}}>{`Get in touch → ${MUSE_EMAIL}`}</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- FOUNDER (studio route) ----------
+function StudioScreen() {
+  return (
+    <section className="container" style={{paddingTop:64,paddingBottom:96}}>
+      <div className="eyebrow" style={{marginBottom:24}}>§ IV · THE FOUNDER</div>
+      <h1 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:96,lineHeight:0.95,letterSpacing:'-0.03em',margin:'0 0 64px',maxWidth:1100}}>
+        A studio built on the principles of free play, from the Global South outward.
+      </h1>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 2fr',gap:24,alignItems:'start'}}>
+        <div style={{display:'flex',flexDirection:'column',gap:24}}>
+        <img src="founder.png" alt="Urooj Kamran Azmi" style={{display:'block',width:'100%',aspectRatio:'4 / 5',objectFit:'cover',objectPosition:'50% 30%',border:'1px solid var(--ink)'}} />
+        <div className="frame-card" style={{padding:'32px 24px',display:'flex',flexDirection:'column',gap:8,minHeight:260,justifyContent:'space-between'}}>
+          <div className="eyebrow">No. 01</div>
+          <div>
+            <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:96,lineHeight:0.9,letterSpacing:'-0.03em'}}>Urooj</div>
+            <div className="meta" style={{marginTop:10,letterSpacing:'0.32em'}}>KAMRAN AZMI</div>
+          </div>
+          <span className="meta" style={{fontSize:11}}>Founder &amp; CEO · Muse Studios</span>
+        </div>
+        </div>
+        <div>
+          <p style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:32,lineHeight:1.25,margin:'0 0 32px',color:'var(--fg-2)'}}>{FOUNDER.line}</p>
+          {FOUNDER.bio.map((t, i) => <p key={i} style={{fontSize:17,lineHeight:1.65,maxWidth:680,marginBottom:24}}>{t}</p>)}
+          <a className="btn primary" href={MUSE_LINKS.imdb} target="_blank" rel="noreferrer" style={{whiteSpace:'nowrap'}}>IMDb ↗</a>
+        </div>
+      </div>
+      <div className="eyebrow" style={{margin:'72px 0 18px'}}>FEATURED IN · 03</div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(3, 1fr)',gap:24}}>
+        {FOUNDER.featured.map(f => (
+          <a key={f.url} href={f.url} target="_blank" rel="noreferrer" className="frame-card" style={{padding:'32px 24px',display:'flex',flexDirection:'column',gap:8,minHeight:200,justifyContent:'space-between',color:'var(--ink)',textDecoration:'none'}}>
+            <div className="eyebrow">{f.src}</div>
+            <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:30,lineHeight:1.05,letterSpacing:'-0.02em'}}>{f.title} ↗</div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------- CONTACT ----------
+function ContactScreen() {
+  const [svc, setSvc] = useState(['Script']);
+  const toggleSvc = x => setSvc(cur => cur.includes(x) ? (cur.length > 1 ? cur.filter(y => y !== x) : cur) : [...cur, x]);
+  const [name, setName] = useState('');
+  const [org, setOrg] = useState('');
+  const [msg, setMsg] = useState('');
+  const [sent, setSent] = useState(false);
+  const field = {width:'100%',padding:'10px 12px',border:'1px solid var(--ink)',background:'var(--cream)',fontFamily:'var(--font-sans)',fontSize:14};
+  const submit = (e) => {
+    e.preventDefault();
+    const subject = `[${svc.join(', ')}] ${name || 'Muse Studios enquiry'}`;
+    const body = `Name: ${name}\nStudio / org: ${org}\nRegarding: ${svc.join(', ')}\n\n${msg}`;
+    window.location.href = MUSE_MAILTO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    setSent(true);
+  };
+  return (
+    <section className="container" style={{paddingTop:64,paddingBottom:96,display:'grid',gridTemplateColumns:'1fr 1fr',gap:96}}>
+      <div>
+        <div className="eyebrow" style={{marginBottom:24}}>§ END · CONTACT</div>
+        <h1 style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:96,lineHeight:0.95,letterSpacing:'-0.03em',margin:'0 0 32px'}}>
+          Send it here.
+        </h1>
+        <p style={{fontSize:18,lineHeight:1.6,maxWidth:520,marginBottom:32}}>
+          Write to us at <a href={MUSE_MAILTO} style={{color:'inherit'}}>{MUSE_EMAIL}</a> with your scripts, your questions, or the work that is still looking for a home.
+        </p>
+        <dl style={{display:'grid',gridTemplateColumns:'1fr 2fr',rowGap:12,fontFamily:'var(--font-mono)',fontSize:12,letterSpacing:'0.04em'}}>
+          <dt style={{color:'var(--fg-3)'}}>EMAIL</dt><dd style={{margin:0}}><a href={MUSE_MAILTO} style={{color:'inherit'}}>{MUSE_EMAIL}</a></dd>
+          <dt style={{color:'var(--fg-3)'}}>IMDB</dt><dd style={{margin:0}}><a href={MUSE_LINKS.imdb} target="_blank" rel="noreferrer" style={{color:'inherit'}}>imdb ↗</a></dd>
+          <dt style={{color:'var(--fg-3)'}}>INSTAGRAM</dt><dd style={{margin:0}}><a href={MUSE_LINKS.instagram} target="_blank" rel="noreferrer" style={{color:'inherit'}}>instagram ↗</a></dd>
+        </dl>
+      </div>
+      <form style={{border:'1px solid var(--ink)',padding:32,background:'var(--paper)'}} onSubmit={submit}>
+        <div className="eyebrow" style={{marginBottom:24}}>TO · {MUSE_EMAIL.toUpperCase()}</div>
+        <div style={{display:'grid',gap:18}}>
+          <div>
+            <label className="eyebrow" style={{display:'block',marginBottom:6,fontSize:10}}>Your name</label>
+            <input style={field} value={name} onChange={e=>setName(e.target.value)} placeholder="Your name"/>
+          </div>
+          <div>
+            <label className="eyebrow" style={{display:'block',marginBottom:6,fontSize:10}}>Studio / organisation</label>
+            <input style={field} value={org} onChange={e=>setOrg(e.target.value)} placeholder="Independent"/>
+          </div>
+          <div>
+            <label className="eyebrow" style={{display:'block',marginBottom:6,fontSize:10}}>Regarding · select all that apply</label>
+            <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
+              {['Script','Writers Rooms','Question','Work'].concat(PRACTICE.map(p => p.name)).map(s => (
+                <button type="button" key={s} onClick={() => toggleSvc(s)} aria-pressed={svc.includes(s)} className={`btn ${svc.includes(s)?'primary':''}`} style={{padding:'6px 12px',fontSize:12}}>{s}</button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label className="eyebrow" style={{display:'block',marginBottom:6,fontSize:10}}>The story</label>
+            <textarea rows={4} value={msg} onChange={e=>setMsg(e.target.value)} style={{...field,fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:18,lineHeight:1.4,resize:'none'}} placeholder="A story no one wants to tell."></textarea>
+          </div>
+          {!sent && <button className="btn signal" style={{marginTop:8,justifyContent:'center'}}><span className="rec-dot"></span> Send it</button>}
+          {sent && (
+            <div style={{marginTop:8,background:'var(--ink)',color:'var(--cream)',padding:'28px 24px',textAlign:'center'}}>
+              <div className="eyebrow on-ink" style={{marginBottom:14}}>THAT'S A WRAP · OPENING YOUR MAIL</div>
+              <div style={{fontFamily:'var(--font-display)',fontStyle:'italic',fontSize:30,lineHeight:1.15,letterSpacing:'-0.015em'}}>Thank you. We'll read every word.</div>
+            </div>
+          )}
+        </div>
+      </form>
+    </section>
+  );
+}
+
+Object.assign(window, { HomeScreen, WorkScreen, CaseScreen, ServicesScreen, StudioScreen, ContactScreen });
+
+</script>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// --- Custom film-viewfinder cursor ---
+function CursorFX() {
+  const ret = useRef(); const dot = useRef();
+  useEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches) return;
+    let rx = window.innerWidth/2, ry = window.innerHeight/2, dx = rx, dy = ry, raf;
+    const tick = () => {
+      // reticle lags slightly behind, dot is exact — a focus-pull feel
+      rx += (tx - rx) * 0.22; ry += (ty - ry) * 0.22;
+      if (ret.current) ret.current.style.transform = `translate(${rx}px, ${ry}px)`;
+      if (dot.current) dot.current.style.transform = `translate(${tx}px, ${ty}px)`;
+      raf = requestAnimationFrame(tick);
+    };
+    let tx = rx, ty = ry;
+    const move = (e) => {
+      tx = e.clientX; ty = e.clientY;
+      const hot = e.target.closest('a, button, [role="button"], .es-reel, .frame-card, .reel-card, [data-cursor-hot]');
+      if (ret.current) ret.current.classList.toggle('is-hot', !!hot);
+    };
+    const down = () => ret.current && ret.current.classList.add('is-down');
+    const up = () => ret.current && ret.current.classList.remove('is-down');
+    const leave = () => { ret.current && ret.current.classList.add('cursor-hidden'); dot.current && dot.current.classList.add('cursor-hidden'); };
+    const enter = () => { ret.current && ret.current.classList.remove('cursor-hidden'); dot.current && dot.current.classList.remove('cursor-hidden'); };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mousedown', down);
+    window.addEventListener('mouseup', up);
+    document.addEventListener('mouseleave', leave);
+    document.addEventListener('mouseenter', enter);
+    raf = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('mousemove', move); window.removeEventListener('mousedown', down); window.removeEventListener('mouseup', up); document.removeEventListener('mouseleave', leave); document.removeEventListener('mouseenter', enter); };
+  }, []);
+  return (
+    <>
+      <div ref={ret} className="cursor-reticle">
+        <span className="c-tl"></span><span className="c-tr"></span>
+        <span className="c-bl"></span><span className="c-br"></span>
+      </div>
+      <div ref={dot} className="cursor-dot"></div>
+    </>
+  );
+}
+
+// --- grain + scroll-reveal wiring, re-run on each route ---
+function useDynamicFX(route, closing) {
+  useEffect(() => {
+    document.body.classList.add('js-reveal');
+    const t = setTimeout(() => {
+      // 1) inject grain layers into cards/monitors
+      document.querySelectorAll('.frame-card, .es-monitor, .es-reel .thumb, .reel-card .strip').forEach(el => {
+        if (!el.querySelector(':scope > .grain-layer')) {
+          const g = document.createElement('div'); g.className = 'grain-layer'; el.appendChild(g);
+        }
+      });
+      // 2) tag sections for staggered scroll reveal + observe
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      const secs = document.querySelectorAll('#app section');
+      secs.forEach((s, i) => {
+        if (!s.hasAttribute('data-reveal')) { s.setAttribute('data-reveal', ''); s.style.transitionDelay = (Math.min(i, 4) * 60) + 'ms'; }
+        // reveal immediately if already in the viewport (don't wait on IO, which can be throttled)
+        const rect = s.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92) s.classList.add('is-in');
+        else io.observe(s);
+      });
+      window.__museIO = io;
+      // hard fallback: guarantee everything is visible shortly after, even if IO never fires
+      window.__museFallback = setTimeout(() => { secs.forEach(s => s.classList.add('is-in')); }, 1100);
+    }, 60);
+    return () => { clearTimeout(t); clearTimeout(window.__museFallback); if (window.__museIO) window.__museIO.disconnect(); };
+  }, [route, closing]);
+}
+
+function App() {
+  const [route, setRoute] = useState('home');
+  const [project, setProject] = useState(null);
+  const [closing, setClosing] = useState(false);
+  const pending = useRef(null);
+
+  const navigate = useCallback((next, proj) => {
+    if (next === route && proj === undefined) return;
+    pending.current = { next, proj };
+    setClosing(true);
+    setTimeout(() => {
+      const p = pending.current;
+      if (p.proj !== undefined) setProject(p.proj);
+      setRoute(p.next);
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => setClosing(false));
+    }, 280);
+  }, [route]);
+
+  const go = useCallback((r) => navigate(r, undefined), [navigate]);
+  const openCase = useCallback((p) => navigate('case', p), [navigate]);
+
+  useDynamicFX(route, closing);
+
+  // hidden tabs freeze CSS transitions — force-show content while hidden
+  useEffect(() => {
+    const sync = () => document.body.classList.toggle('fx-force', document.hidden);
+    sync();
+    document.addEventListener('visibilitychange', sync);
+    return () => document.removeEventListener('visibilitychange', sync);
+  }, []);
+
+  return (
+    <div data-screen-label={`Muse / ${route}`}>
+      <CursorFX />
+      <Intermission />
+      <div className={`page-fx ${closing ? 'closing' : ''}`}>
+        <div className="bar top"></div>
+        <div className="bar bottom"></div>
+        <div className="fx-readout"><span className="rec-dot"></span> CUT — {route.toUpperCase()}</div>
+      </div>
+      <TopNav route={route === 'case' ? 'work' : route} setRoute={go} />
+      <div key={route} className="screen-enter">
+        {route === 'home' && <HomeScreen setRoute={go} openCase={openCase} />}
+        {route === 'work' && <WorkScreen openCase={openCase} />}
+        {route === 'case' && <CaseScreen project={project} setRoute={go} />}
+        {route === 'services' && <ServicesScreen />}
+        {route === 'studio' && <StudioScreen />}
+        {route === 'contact' && <ContactScreen />}
+        <Footer go={go} openCase={openCase} />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+</script>
+</body>
+</html>
